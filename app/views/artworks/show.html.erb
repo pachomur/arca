@@ -142,10 +142,6 @@
             <div class="col-sm-9"><%=@artwork.get_author_biography%></div>
           </div>
           <div class="row">
-            <label class="control-label col-sm-3">Comentario Bibliográfico</label>
-            <div class="col-sm-9"><%=@artwork.get_biographic_comment%></div>
-          </div>
-          <div class="row">
             <label class="control-label col-sm-3">Firmado</label>
             <div class="col-sm-9"><%=@artwork.get_signed%></div>
           </div>
@@ -186,6 +182,10 @@
             <label class="control-label col-sm-3">Sintesis</label>
             <div class="col-sm-9"><%=@artwork.get_synthesis%></div>
           </div>
+          <div class="row">
+            <label class="control-label col-sm-3">Comentario Bibliográfico</label>
+            <div class="col-sm-9"><%=@artwork.get_biographic_comment%></div>
+          </div>
           <br>
           <div class="row">
             <label class="control-label col-sm-3">Categoría 1</label>
@@ -224,7 +224,7 @@
             </div>
           </div>
           <div class="row">
-            <label class="control-label col-sm-3">Grabados</label>
+            <label class="control-label col-sm-3">Características particulares</label>
             <div class="col-sm-10">
               <table class="table table-condensed table-hover table-striped">
                 <tbody>
@@ -241,7 +241,7 @@
       <div class="tab-pane fade in" id="desc_img_rel">
         <div class="container" style="width: inherit">
           <div class="row">
-            <label class="control-label col-sm-3">Escena</label>
+            <label class="control-label col-sm-3">Escenario</label>
             <div class="col-sm-9"><%=@artwork.get_scene_name%></div>
           </div>
           <div class="row">
@@ -257,11 +257,11 @@
             <div class="col-sm-9"><%=@artwork.get_phylactery_billboard_name%></div>
           </div>
           <div class="row">
-            <label class="control-label col-sm-3">Atributo iconografico</label>
+            <label class="control-label col-sm-3">Fuente iconográfica</label>
             <div class="col-sm-9"><%=@artwork.get_iconographic_attribute_name%></div>
           </div>
           <div class="row">
-            <label class="control-label col-sm-3">Comentarios</label>
+            <label class="control-label col-sm-3">Iconotexto</label>
             <div class="col-sm-9"><%=@artwork.get_comment%></div>
           </div>
           <div class="row">
@@ -271,7 +271,7 @@
 
                 <tbody>
 
-                <% @artwork.artwork_symbols.each  do |sym| %>
+                <% @artwork.artwork_symbols.order('name ASC').each  do |sym| %>
                     <tr><td><%= sym.name %></td></tr>
                 <% end %>
 
@@ -284,15 +284,6 @@
           <div class="row">
               <div class="col-sm-12">
                     <div class="row">
-                      <div class="col-md-12">
-                        <label class="control-label">Pasaje:</label>
-                        <%= @artwork.get_passage_name %>
-                      </div>
-                      <div class="col-md-12">
-                        <textarea class="control-text" style="margin: 0px; width: 100%; height: 74px;">
-                          <%= @artwork.get_passage_text %>
-                        </textarea>
-                      </div>
                       <div class="col-md-12">
                         <label class="control-label">Tipo de historia:</label>
                         <%= @artwork.get_passage_history_type %>
@@ -328,7 +319,15 @@
               </table>
             </div>
           </div>
-
+          <div class="row">
+            <label class="control-label">Pasaje:</label>
+            <%= @artwork.get_passage_name %>
+          </div>
+          <div class="row">
+            <textarea class="control-text" style="margin: 0px; width: 100%; height: 74px;">
+              <%= @artwork.get_passage_text %>
+            </textarea>
+          </div>
           <div class="row">
             <table class="table table-condensed table-bordered table-striped">
               <tbody>

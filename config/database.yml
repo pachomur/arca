@@ -20,8 +20,8 @@ default: &default
   password: Sistemas7
   username: dbhistoria
   reconnect: true
-  #host: 157.253.60.71
-  host: localhost
+  host: 157.253.60.71
+  #host: localhost
   adapter: postgresql
   encoding: unicode
   # For details on connection pooling, see rails configuration guide
