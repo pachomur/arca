@@ -15,11 +15,12 @@
 # gem 'pg'
 #
 default: &default
-  password: kelvin
-  username: postgres
-  #password: 12345678
-  #username: dbhistoria
+  #password: kelvin
+  #username: postgres
+  password: Sistemas7
+  username: dbhistoria
   reconnect: true
+  #host: 157.253.60.71
   host: localhost
   adapter: postgresql
   encoding: unicode
