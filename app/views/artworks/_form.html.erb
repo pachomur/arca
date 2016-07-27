@@ -39,8 +39,9 @@
         <div class="col-md-6">
           <%= f.text_field :title, label: "Titulo" %>
           <%= f.collection_select :author_id, Author.all.order("lastname, name"), :id, :get_full_name,  {:prompt => 'Seleccione el author'} %>
-          <%= f.text_field :activity%>
-          <%= f.text_area :biographic_data , :size => "30x10"%>
+          <%= f.collection_select :type_id, Type.order(:name), :id, :name,  {:prompt => 'Seleccione el tipo'} %>
+          <%= f.collection_select :source_id, Source.order(:name), :id, :name,  {:prompt => 'Seleccione la fuente'} %>
+          <%= f.collection_select :origin_country_id, Country.order("name_spanish"), :id, :name_spanish,  {:prompt => 'País de origen'} %>
           <div class="form-group">
             <%= f.label :signed, class: "control-label col-sm-2"%>
             <div class="col-md-10">
@@ -59,13 +60,10 @@
       <br>
       <div class="row">
         <div class="col-md-6">
-          <%= f.collection_select :type_id, Type.order(:name), :id, :name,  {:prompt => 'Seleccione el tipo'} %>
-          <%= f.collection_select :source_id, Source.order(:name), :id, :name,  {:prompt => 'Seleccione la fuente'} %>
-          <%= f.collection_select :origin_country_id, Country.order("name_spanish"), :id, :name_spanish,  {:prompt => 'País de origen'} %>
           <%= f.collection_select :origin_city_id, City.order(:name), :id, :name,  {:prompt => 'Ciudad de origen'} %>
           <%= f.collection_select :actual_country_id, Country.order("name_spanish"), :id, :name_spanish,  {:prompt => 'País actual'} %>
           <%= f.collection_select :actual_city_id, City.order(:name), :id, :name,  {:prompt => 'Ciudad actual'} %>
-          <%= f.text_area :annotation, label:"Anotación", :size => "30x10" %>
+          <%= f.text_area :annotation, label:"Anotación", :size => "30x5" %>
         </div>
         <div class="col-md-6">
           <%= f.collection_select :school_id, School.order(:name), :id, :name,  {:prompt => 'Seleccione la escuela'} %>
@@ -77,10 +75,10 @@
       <br>
       <div class="row">
         <div class="col-md-6">
-          <%= f.text_area :synthesis, :class => 'form-control' , :size => "30x10" %>
+          <%= f.text_area :synthesis, :class => 'form-control' , :size => "30x5" %>
         </div>
         <div class="col-md-6">
-          <%= f.text_area :biographic_comment, :class => 'form-control', :size => "30x10" %>
+          <%= f.text_area :biographic_comment, :class => 'form-control', :size => "30x5" %>
         </div>
       </div>
       <br>
@@ -96,7 +94,7 @@
         <div class="col-md-6">
           <%= f.fields_for :engravings, @artwork.engravings.build  do |fart| %>
               <fieldset>
-                <%= fart.text_area  :name, label: "Características particulares" , :size => "30x10"%>
+                <%= fart.text_area  :name, label: "Características particulares" , :size => "30x5"%>
                 <%= fart.hidden_field :_destroy %>
               </fieldset>
           <% end %>
@@ -116,7 +114,7 @@
         <%= f.collection_select :iconographic_attribute_id, IconographicAttribute.order(:name), :id, :name,  {:prompt => 'Atributo Iconografico'}, label:"Atributo Iconografico" %>
         </div>
         <div class="col-md-6">
-          <%= f.text_area :comment, :class => 'form-control' , :size => "30x10" %>
+          <%= f.text_area :comment, :class => 'form-control' , :size => "30x5" %>
         </div>
 
         <br>
@@ -257,13 +255,19 @@
           <div class="modal-header">
             Símbolos de la obra<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           </div>
-          <div class="modal-body">
-            <% for description in ArtworkSymbol.all.order("name ASC") %>
-                <%= check_box_tag "artwork[artwork_symbol_ids][]", description.id, @artwork.artwork_symbols.include?(description) %>
-                <%=	 description.name %>
-                <br>
-            <% end %>
+          <div class="modal-content">
+            <div class="col-xs-12 col-sm-12 col-md-12" >
+              <div class="row" style="padding: 5px">
+                <% for description in ArtworkSymbol.all.order("name ASC") %>
+                    <div class="col-xs-2 col-sm-2 col-md-2" style="height: 40px; border-style: solid; border-width: 1px">
+                      <%= check_box_tag "artwork[artwork_symbol_ids][]", description.id, @artwork.artwork_symbols.include?(description) %>
+                      <%=	 description.name %>
+                    </div>
+                <% end %>
+              </div>
+            </div>
           </div>
+
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
           </div>

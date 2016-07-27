@@ -15,7 +15,6 @@
 # gem 'pg'
 #
 default: &default
-  #password: kelvin
   #username: postgres
   password: Sistemas7
   username: dbhistoria

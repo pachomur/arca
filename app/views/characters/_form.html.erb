@@ -19,18 +19,21 @@
     <%= f.label :biography %><br>
     <%= f.text_area :biography, cols: "100", rows: "10" %>
   </div>
-  <div class="field">
+    <div class="row">
+      <div class="col-md-3">
     <%= f.label :death_date %><br>
-    <%= f.date_select :death_date %>
+    <%= f.date_field :death_date, :class => 'form-control' %>
   </div>
-  <div class="field">
+  <div class="col-md-3">
     <%= f.label :beatification_date %><br>
-    <%= f.date_select :beatification_date %>
+    <%= f.date_field :beatification_date, :class => 'form-control' %>
   </div>
-  <div class="field">
+  <div class="col-md-3">
     <%= f.label :canonization_date %><br>
-    <%= f.date_select :canonization_date %>
+    <%= f.date_field :canonization_date, :class => 'form-control'  %>
   </div>
+    </div>
+    <br>
   <div class="actions">
     <%= f.submit %>
   </div>

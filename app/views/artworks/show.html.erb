@@ -178,14 +178,6 @@
             <label class="control-label col-sm-3">Escuela</label>
             <div class="col-sm-9"><%=@artwork.get_school_name%></div>
           </div>
-          <div class="row">
-            <label class="control-label col-sm-3">Sintesis</label>
-            <div class="col-sm-9"><%=@artwork.get_synthesis%></div>
-          </div>
-          <div class="row">
-            <label class="control-label col-sm-3">Comentario Bibliográfico</label>
-            <div class="col-sm-9"><%=@artwork.get_biographic_comment%></div>
-          </div>
           <br>
           <div class="row">
             <label class="control-label col-sm-3">Categoría 1</label>
@@ -207,10 +199,20 @@
             <label class="control-label col-sm-3">Categoría 5</label>
             <div class="col-sm-9"><%=@artwork.get_category_5_name%></div>
           </div>
+          <br>
+          <div class="row">
+            <label class="control-label col-sm-3">Sintesis</label>
+            <div class="col-sm-9"><%=@artwork.get_synthesis%></div>
+          </div>
           <div class="row">
             <label class="control-label col-sm-3">Anotación</label>
             <div class="col-sm-9"><%=@artwork.get_annotation%></div>
           </div>
+          <div class="row">
+            <label class="control-label col-sm-3">Comentario Bibliográfico</label>
+            <div class="col-sm-9"><%=@artwork.get_biographic_comment%></div>
+          </div>
+          <br>
           <div class="row">
             <label class="control-label col-sm-3">Descriptores</label>
             <div class="col-sm-10">
@@ -218,18 +220,6 @@
                 <tbody>
                 <% @artwork.descriptions.each  do |sym| %>
                     <tr><td><%= sym.description %></td></tr>
-                <% end %>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="row">
-            <label class="control-label col-sm-3">Características particulares</label>
-            <div class="col-sm-10">
-              <table class="table table-condensed table-hover table-striped">
-                <tbody>
-                <% @artwork.engravings.each  do |e| %>
-                    <tr><td><%= e.name %></td></tr>
                 <% end %>
                 </tbody>
               </table>
@@ -279,21 +269,17 @@
               </table>
             </div>
           </div>
-
-          <br>
           <div class="row">
-              <div class="col-sm-12">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <label class="control-label">Tipo de historia:</label>
-                        <%= @artwork.get_passage_history_type %>
-                      </div>
-                      <div class="col-md-12">
-                        <label class="control-label">Fuente:</label>
-                        <%= @artwork.get_passage_source %>
-                      </div>
-                    </div>
-              </div>
+            <label class="control-label col-sm-3">Características particulares</label>
+            <div class="col-sm-10">
+              <table class="table table-condensed table-hover table-striped">
+                <tbody>
+                <% @artwork.engravings.each  do |e| %>
+                    <tr><td><%= e.name %></td></tr>
+                <% end %>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -327,6 +313,20 @@
             <textarea class="control-text" style="margin: 0px; width: 100%; height: 74px;">
               <%= @artwork.get_passage_text %>
             </textarea>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="row">
+                <div class="col-md-12">
+                  <label class="control-label">Tipo de historia:</label>
+                  <%= @artwork.get_passage_history_type %>
+                </div>
+                <div class="col-md-12">
+                  <label class="control-label">Fuente:</label>
+                  <%= @artwork.get_passage_source %>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="row">
             <table class="table table-condensed table-bordered table-striped">

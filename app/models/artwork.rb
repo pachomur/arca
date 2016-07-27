@@ -266,10 +266,6 @@ class Artwork < ActiveRecord::Base
     biographic_data ? biographic_data : "N/A"
   end
 
-  def get_biographic_comment
-    biographic_comment ? biographic_comment : "N/A"
-  end
-
   def get_signed
     signed ? "Si" : "No"
   end
