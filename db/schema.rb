@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150910002751) do
+ActiveRecord::Schema.define(version: 20160804154804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,54 @@ ActiveRecord::Schema.define(version: 20150910002751) do
     t.integer "engraving_id"
   end
 
+  create_table "artworksbk", force: true do |t|
+    t.integer  "passage_id"
+    t.integer  "author_id"
+    t.integer  "scene_id"
+    t.integer  "type_id"
+    t.integer  "source_id"
+    t.integer  "donor_id"
+    t.integer  "iconographic_attribute_id"
+    t.integer  "phylactery_billboard_id"
+    t.integer  "story_type_id"
+    t.integer  "school_id"
+    t.integer  "origin_city_id"
+    t.integer  "actual_city_id"
+    t.integer  "origin_country_id"
+    t.integer  "actual_country_id"
+    t.integer  "place_id"
+    t.integer  "category_1_id"
+    t.integer  "category_2_id"
+    t.integer  "category_3_id"
+    t.integer  "category_4_id"
+    t.integer  "category_5_id"
+    t.boolean  "signed"
+    t.string   "title"
+    t.string   "activity"
+    t.text     "biographic_data"
+    t.date     "creation_date"
+    t.string   "annotation_date"
+    t.text     "synthesis"
+    t.text     "biographic_comment"
+    t.text     "annotation"
+    t.text     "sub_image"
+    t.text     "comment"
+    t.decimal  "latitude_origin",           precision: 10, scale: 6, default: 0.0
+    t.decimal  "latitude_current",          precision: 10, scale: 6, default: 0.0
+    t.decimal  "longitude_origin",          precision: 10, scale: 6, default: 0.0
+    t.decimal  "longitude_current",         precision: 10, scale: 6, default: 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string   "sub_image_file_name"
+    t.string   "sub_image_content_type"
+    t.integer  "sub_image_file_size"
+    t.datetime "sub_image_updated_at"
+  end
+
   create_table "authors", force: true do |t|
     t.string   "name"
     t.string   "lastname"
@@ -123,6 +171,10 @@ ActiveRecord::Schema.define(version: 20150910002751) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "categories", force: true do |t|

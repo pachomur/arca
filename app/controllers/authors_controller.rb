@@ -1,8 +1,6 @@
 class AuthorsController < ApplicationController
   before_action :set_author, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
-
-  # GET /authors
   # GET /authors.json
   def index
     @authors = Author.paginate(:page => params[:page]).order("lastname, name")

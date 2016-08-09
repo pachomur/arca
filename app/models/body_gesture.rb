@@ -2,6 +2,17 @@ class BodyGesture < ActiveRecord::Base
 
   validates_uniqueness_of :name, :message => "El gesto ya existe."
 
+  has_attached_file :image,
+                    :styles =>  {  :large => "500x500>",
+                                   :medium => "300x300>",
+                                   :thumb => "100x100>"
+                    },
+                    :default_url => ":style/missing.png",
+                    :url => "/Portal ARCA/project/imagenesGestos/:id/:style/:basesname.:extension",
+                    :path => ":rails_root/Portal ARCA/project/imagenesGestos/:id/:style/:basesname.:extension"
+
+  validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/gif", "image/png"]
+
   has_and_belongs_to_many :artworks
 
 end

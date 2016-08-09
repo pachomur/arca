@@ -49,13 +49,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6">
-            <%= f.select(:category_1_id, @categories_for_select_1, prompt: 'Select Category', :class => 'form-control', :include_blank => true) %>
-            <%= f.select(:category_2_id, @categories_for_select_2, prompt: 'Select Category', :class => 'form-control', :include_blank => true) %>
-            <%= f.select(:category_3_id, @categories_for_select_3, prompt: 'Select Category', :class => 'form-control', :include_blank => true) %>
-            <%= f.select(:category_4_id, @categories_for_select_4, prompt: 'Select Category', :class => 'form-control', :include_blank => true) %>
-            <%= f.select(:category_5_id, @categories_for_select_5, prompt: 'Select Category', :class => 'form-control', :include_blank => true) %>
-        </div>
+        <div class="col-md-6">mo</div>
       </div>
       <br>
       <div class="row">
@@ -151,7 +145,11 @@
 
     <div class="tab-pane fade in" id="cuerpo_gestos">
       <div class="row">
-        <!--<label class="control-label col-sm-3">Descriptores</label>-->
+        <div class="col-md-6">
+          <%= f.file_field :igesto, label: "Imagen",class:"category"%>
+        </div>
+      </div>
+      <div class="row">
         <br>
         <div class="col-md-6">
           <%= f.fields_for :body_gestures, @artwork.body_gestures.build  do |fdesc| %>

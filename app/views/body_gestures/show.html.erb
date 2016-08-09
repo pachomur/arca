@@ -1,9 +1,11 @@
 <p id="notice"><%= notice %></p>
-
+<br>
 <p>
   <strong>Body Gesture:</strong>
   <%= @body_gesture.name %>
 </p>
-
+<p>
+  <%= image_tag @body_gesture.image.url(:medium) %>
+</p>
 <%= link_to 'Edit', edit_body_gesture_path(@body_gesture) %> |
 <%= link_to 'Back', body_gestures_path %>

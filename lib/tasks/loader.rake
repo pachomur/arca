@@ -4,6 +4,7 @@ namespace :loader do
   @ruta_imagenes = '/arca/project/imagenes/'
   #@ruta_imagenes = '/home/kelvin/Documents/Historia/imagenes_jaime/base/'
   @ruta_imagenes2 = '/arca/project/imagenesBase2/'
+  @ruta_imagenes_gestos = '/Portal ARCA/project/imagenesGestos/'
 
   desc "Solo autores"
   task load_authors_with_lastname: :environment do

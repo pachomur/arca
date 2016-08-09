@@ -25,7 +25,6 @@ class BodyGesturesController < ApplicationController
   # POST /body_gestures.json
   def create
     @body_gesture = BodyGesture.new(body_gesture_params)
-
     respond_to do |format|
       if @body_gesture.save
         format.html { redirect_to @body_gesture, notice: 'body_gesture was successfully created.' }
@@ -69,6 +68,6 @@ class BodyGesturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def body_gesture_params
-      params.require(:body_gesture).permit(:name)
+      params.require(:body_gesture).permit(:name, :image)
     end
 end

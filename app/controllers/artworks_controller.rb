@@ -289,7 +289,7 @@ class ArtworksController < ApplicationController
                                     :latitude_origin,:latitude_current,:longitude_origin,:longitude_current, :type_id,
                                     :creation_date, :annotation_date,
                                     descriptions_attributes:[:id,:description,:_destroy],
-                                    body_gestures_attributes:[:id,:name,:_destroy],
+                                    body_gestures_attributes:[:id,:name,:igesto, :_destroy],
                                     author_attributes:[:id,:name,:_destroy],
                                     iconographic_attribute_attributes:[:id,:name,:_destroy],
                                     phylactery_billboard_attributes:[:id,:name,:_destroy],
