@@ -145,11 +145,6 @@
 
     <div class="tab-pane fade in" id="cuerpo_gestos">
       <div class="row">
-        <div class="col-md-6">
-          <%= f.file_field :igesto, label: "Imagen",class:"category"%>
-        </div>
-      </div>
-      <div class="row">
         <br>
         <div class="col-md-6">
           <%= f.fields_for :body_gestures, @artwork.body_gestures.build  do |fdesc| %>
