@@ -11,6 +11,7 @@ class BodyGesture < ActiveRecord::Base
                     :url => "/arca/project/imagenesGestos/:id/:style/:basesname.:extension",
                     :path => ":rails_root/arca/project/imagenesGestos/:id/:style/:basesname.:extension"
 
+
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/gif", "image/png"]
 
   has_and_belongs_to_many :artworks
