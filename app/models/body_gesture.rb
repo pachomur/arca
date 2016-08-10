@@ -8,8 +8,8 @@ class BodyGesture < ActiveRecord::Base
                                    :thumb => "100x100>"
                     },
                     :default_url => ":style/missing.png",
-                    :url => "/arca/project/historia/app/assets/images/imagenesGestos/:id/:style/:basename.:extension",
-                    :path => ":rails_root/arca/project/historia/app/assets/images/imagenesGestos/:id/:style/:basename.:extension"
+                    :url => "/app/assets/images/imagenesGestos/:id/:style/:basename.:extension",
+                    :path => ":rails_root/app/assets/images/imagenesGestos/:id/:style/:basename.:extension"
 
 
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/gif", "image/png"]
