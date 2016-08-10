@@ -47,7 +47,6 @@
               <%= f.check_box_without_bootstrap :signed%>
             </div>
           </div>
-          <%= f.collection_select :origin_country_id, Country.order("name_spanish"), :id, :name_spanish,  {:prompt => 'País de origen'} %>
         </div>
         <div class="col-md-6">
           <%= f.select(:category_1_id, @categories_for_select_1, prompt: 'Select Category', :class => 'form-control', :include_blank => true) %>
@@ -60,6 +59,7 @@
       <br>
       <div class="row">
         <div class="col-md-6">
+          <%= f.collection_select :origin_country_id, Country.order("name_spanish"), :id, :name_spanish,  {:prompt => 'País de origen'} %>
           <%= f.collection_select :origin_city_id, City.order(:name), :id, :name,  {:prompt => 'Ciudad de origen'} %>
           <%= f.collection_select :actual_country_id, Country.order("name_spanish"), :id, :name_spanish,  {:prompt => 'País actual'} %>
           <%= f.collection_select :actual_city_id, City.order(:name), :id, :name,  {:prompt => 'Ciudad actual'} %>
