@@ -4,7 +4,7 @@ class EngravingsController < ApplicationController
   # GET /engravings
   # GET /engravings.json
   def index
-    @engravings = Engraving.all
+    @engravings = Engraving.all.paginate(page: params[:page], per_page: 50).order('name ASC')
   end
 
   # GET /engravings/1

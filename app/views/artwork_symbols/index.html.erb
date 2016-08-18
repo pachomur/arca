@@ -1,6 +1,6 @@
 <h3>Listing artwork_symbols</h3>
 
-<table>
+<table class="table table-bordered table-condensed table-hover">
   <thead>
     <tr>
       <th>Nombre</th>
@@ -8,7 +8,7 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="list">
     <% @artwork_symbols.each do |artwork_symbol| %>
       <tr>
         <td><%= artwork_symbol.name %></td>
@@ -19,7 +19,8 @@
     <% end %>
   </tbody>
 </table>
-
+<br>
+<%= will_paginate @artwork_symbols,  renderer: BootstrapPagination::Rails %>
 <br>
 
 <%= link_to 'New Artwork symbol', new_artwork_symbol_path %>

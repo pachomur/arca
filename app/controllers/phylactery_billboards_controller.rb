@@ -4,7 +4,7 @@ class PhylacteryBillboardsController < ApplicationController
   # GET /phylactery_billboards
   # GET /phylactery_billboards.json
   def index
-    @phylactery_billboards = PhylacteryBillboard.all
+    @phylactery_billboards = PhylacteryBillboard.all.paginate(page: params[:page], per_page: 50).order('name ASC')
   end
 
   # GET /phylactery_billboards/1

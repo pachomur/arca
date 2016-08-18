@@ -4,7 +4,7 @@ class IconographicAttributesController < ApplicationController
   # GET /iconographic_attributes
   # GET /iconographic_attributes.json
   def index
-    @iconographic_attributes = IconographicAttribute.all
+    @iconographic_attributes = IconographicAttribute.all.paginate(page: params[:page], per_page: 50).order('name ASC')
   end
 
   # GET /iconographic_attributes/1
