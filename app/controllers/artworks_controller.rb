@@ -119,6 +119,7 @@ class ArtworksController < ApplicationController
 
         if not params[:topic].nil?
           params[:topic] == 'true' ? buscar = false : nil
+          set_filters(params[:author_show], params[:authors_filter], nil, params[:country])
         elsif not params[:author_show].nil?
           #params[:authors_filter] = params[:author_show]
         elsif not params[:region_show].nil?
