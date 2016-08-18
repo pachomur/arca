@@ -4,7 +4,7 @@ class DescriptionsController < ApplicationController
   # GET /descriptions
   # GET /descriptions.json
   def index
-    @descriptions = Description.all.paginate(page: params[:page], per_page: 50).order('descriptor ASC')
+    @descriptions = Description.all.paginate(page: params[:page], per_page: 50).order('description ASC')
   end
 
   # GET /descriptions/1
