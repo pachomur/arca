@@ -28,6 +28,8 @@
     <% end %>
   </tbody>
 </table>
+  <br>
+  <%= will_paginate @sources,  renderer: BootstrapPagination::Rails %>
 </div>
 
 <script>

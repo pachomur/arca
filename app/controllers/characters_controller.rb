@@ -4,7 +4,7 @@ class CharactersController < ApplicationController
   # GET /characters
   # GET /characters.json
   def index
-    @characters = Character.all
+    @characters = Character.all.paginate(page: params[:page], per_page: 50).order('name ASC')
   end
 
   # GET /characters/1

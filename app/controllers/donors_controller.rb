@@ -4,7 +4,7 @@ class DonorsController < ApplicationController
   # GET /donors
   # GET /donors.json
   def index
-    @donors = Donor.all
+    @donors = Donor.all.paginate(page: params[:page], per_page: 50).order('name ASC')
   end
 
   # GET /donors/1

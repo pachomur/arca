@@ -4,7 +4,7 @@ class PassagesController < ApplicationController
   # GET /passages
   # GET /passages.json
   def index
-    @passages = Passage.all
+    @passages = Passage.all.paginate(page: params[:page], per_page: 50).order('name ASC')
   end
 
   # GET /passages/1

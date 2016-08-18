@@ -4,7 +4,7 @@ class ScenesController < ApplicationController
   # GET /scenes
   # GET /scenes.json
   def index
-    @scenes = Scene.all
+    @scenes = Scene.all.paginate(page: params[:page], per_page: 50).order('name ASC')
   end
 
   # GET /scenes/1

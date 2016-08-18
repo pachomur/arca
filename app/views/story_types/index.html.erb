@@ -27,6 +27,8 @@
     <% end %>
   </tbody>
 </table>
+  <br>
+  <%= will_paginate @story_types,  renderer: BootstrapPagination::Rails %>
 </div>
 
 <script>

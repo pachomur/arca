@@ -29,6 +29,8 @@
         <% end %>
       </tbody>
     </table>
+  <br>
+  <%= will_paginate @cities,  renderer: BootstrapPagination::Rails %>
 </div>
 
 <script>

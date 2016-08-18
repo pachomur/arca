@@ -27,6 +27,8 @@
         <% end %>
       </tbody>
     </table>
+  <br>
+  <%= will_paginate @donors,  renderer: BootstrapPagination::Rails %>
 </div>
 <script>
     var options = {

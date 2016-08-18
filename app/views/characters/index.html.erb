@@ -42,6 +42,8 @@
         <% end %>
       </tbody>
     </table>
+  <br>
+  <%= will_paginate @characters,  renderer: BootstrapPagination::Rails %>
 </div>
 
 <script>

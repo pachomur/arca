@@ -4,7 +4,7 @@ class StoryTypesController < ApplicationController
   # GET /story_types
   # GET /story_types.json
   def index
-    @story_types = StoryType.all
+    @story_types = StoryType.all.paginate(page: params[:page], per_page: 50).order('name ASC')
   end
 
   # GET /story_types/1
