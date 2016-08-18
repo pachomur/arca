@@ -7,7 +7,6 @@
   <button class="sort" data-sort="description">
     Ordenar por descriptor
   </button>
-  <%= will_paginate @descriptions %>
   <table  class="table table-bordered table-condensed table-hover">
       <thead>
         <tr>
@@ -26,7 +25,8 @@
         <% end %>
       </tbody>
   </table>
-  <%= will_paginate @descriptions %>
+  <br>
+  <%= will_paginate @descriptions,  renderer: BootstrapPagination::Rails %>
 </div>
 
 <script>
