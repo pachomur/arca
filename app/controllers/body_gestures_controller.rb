@@ -4,7 +4,7 @@ class BodyGesturesController < ApplicationController
   # GET /body_gestures
   # GET /body_gestures.json
   def index
-    @body_gestures = BodyGesture.all
+    @body_gestures = BodyGesture.all.paginate(page: params[:page], per_page: 50).order('name ASC')
   end
 
   # GET /body_gestures/1
