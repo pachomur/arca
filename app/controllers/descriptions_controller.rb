@@ -7,6 +7,7 @@ class DescriptionsController < ApplicationController
     @descriptions = Description.all.paginate(page: params[:page], per_page: 50).order('description ASC')
   end
 
+
   # GET /descriptions/1
   # GET /descriptions/1.json
   def show
