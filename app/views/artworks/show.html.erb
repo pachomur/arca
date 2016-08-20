@@ -299,8 +299,8 @@
 
                 <% @artwork.body_gestures.each  do |sym| %>
                     <tr>
-                      <td><%= image_tag sym.image.url(:thumb) %></td>
-                      <td><%= sym.name %></td>
+                      <td><%= image_tag sym.image.url(:thumb) %>
+                      <%= sym.name %></td>
                     </tr>
                 <% end %>
 
