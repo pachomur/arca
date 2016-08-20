@@ -7,7 +7,7 @@ class BodyGesture < ActiveRecord::Base
                                    :medium => "300x300>",
                                    :thumb => "100x100>"
                     },
-                    :default_url => ":style/missing100.png",
+                    :default_url => ":style/missing.png",
                     :url => "/assets/imagenesGestos/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/assets/imagenesGestos/:id/:style/:basename.:extension"
 
