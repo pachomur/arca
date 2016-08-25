@@ -95,7 +95,7 @@ class ArtworksController < ApplicationController
       end
 
 
-      set_filters(params[:author_show], params[:authors_filter], params[:topic], params[:country])
+        set_filters(params[:author_show], params[:authors_filter], params[:topic], params[:country], params[:nivel_id])
       page =1
       if not params[:page].nil?
         page = params[:page]
@@ -119,7 +119,7 @@ class ArtworksController < ApplicationController
 
         if not params[:topic].nil?
           params[:topic] == 'true' ? buscar = false : nil
-          set_filters(params[:author_show], params[:authors_filter], nil, params[:country])
+          set_filters(params[:author_show], params[:authors_filter], nil, params[:country], params[:nivel_id])
         elsif not params[:author_show].nil?
           #params[:authors_filter] = params[:author_show]
         elsif not params[:region_show].nil?
@@ -138,7 +138,7 @@ class ArtworksController < ApplicationController
           params[:country] = country.id
         end
         if buscar
-          set_filters(params[:author_show], params[:authors_filter], params[:topic], params[:country])
+          set_filters(params[:author_show], params[:authors_filter], params[:topic], params[:country], params[:nivel_id])
           if params[:region] == ('true')
             @countries_map = Hash.new
             @json_countries = Hash.new
@@ -409,16 +409,23 @@ class ArtworksController < ApplicationController
 
 
   # Methods to set @artworks, @clasifications, @countries, @authors
-  def set_filters author_id, author_lastname, category_id, country_id
+  def set_filters author_id, author_lastname, category_id, country_id, nivel_id
+    if nivel_id == nil then nivel_id = 1
+    elsif nivel_id.split("/").size == 1 then nivel_id = 2
+    elsif nivel_id.split("/").size == 2 then nivel_id = 3
+    elsif nivel_id.split("/").size == 3 then nivel_id = 4
+    else nivel_id = 5
+    end
     if not params[:search].nil? and not params[:search].to_s.empty?
       p "Filter artworks..."
-      @clasifications = Category.filtros_category(author_id, author_lastname, category_id, country_id)
-      @countries = Country.filtros_place(author_id, author_lastname, category_id, country_id)
+      @clasifications = Category.filtros_category(author_id, author_lastname, category_id, country_id, nivel_id)
+      @countries = Country.filtros_place(author_id, author_lastname, category_id, country_id, nivel_id)
     else
-      @clasifications = Category.filtros_category(author_id, author_lastname, category_id, country_id)
-      @countries = Country.filtros_place(author_id, author_lastname, category_id, country_id)
-      @artworks = Artwork.filtros(author_id, author_lastname, category_id, country_id)
+      @clasifications = Category.filtros_category(author_id, author_lastname, category_id, country_id, nivel_id)
+      @countries = Country.filtros_place(author_id, author_lastname, category_id, country_id, nivel_id)
+      @artworks = Artwork.filtros(author_id, author_lastname, category_id, country_id, nivel_id)
     end
+    @clasifications.parent = Category.find(params[:parent_id]) unless params[:parent_id] == nil
   end
 
 end

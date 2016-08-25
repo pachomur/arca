@@ -28,3 +28,29 @@ background-color: #f9f9fb !important;
 {
     color: #9B9CA0 !important;
 }
+
+#submenu > ul, ol
+ {
+     margin-right: 3px;
+     font-size: 11px;
+     padding-left: 15px;
+     margin-bottom:-5px !important;
+ }
+#submenu > li {
+    font-size: 11px;
+    margin: 3px 0;
+    margin-bottom:-5px !important;
+}
+
+#submenu2 > ul, ol
+{
+    margin-right: 3px;
+    font-size: 11px;
+    padding-left: 11px;
+    margin-bottom:-5px !important;
+}
+#submenu2 > li {
+    font-size: 11px;
+    margin: 3px 0;
+    margin-bottom:-5px !important;
+}

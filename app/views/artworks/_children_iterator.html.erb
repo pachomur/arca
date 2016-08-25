@@ -1,0 +1,19 @@
+<div id="collapseClasificacionLugar_<%= padre %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingClasificacionLugar_<%= padre %>">
+  <div id="submenu2">
+    <ul>
+      <%hijos.each do |hijo| %>
+          <li>
+              <%= link_to_unless_current hijo.name, artworks_path(:params => params.merge(:topic => hijo.id, :nivel_id => hijo.ancestry)) %>
+              <% if hijo.children.present? %>
+                <div style="display:inline-block" class="panel-heading" role="tab" id="headingClasificacionLugar_<%= hijo.id %>">
+                  <a class="collapsed" data-toggle="collapse" href="#collapseClasificacionLugar_<%= hijo.id %>" aria-expanded="false" aria-controls="collapseClasificacionLugar_<%= hijo.id %>">
+                    +
+                  </a>
+                </div>
+                <%= render 'children_iterator',  hijos: hijo.children, padre: hijo.id %>
+              <% end %>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
