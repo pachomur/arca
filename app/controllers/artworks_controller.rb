@@ -92,10 +92,13 @@ class ArtworksController < ApplicationController
         b_author.each do |artworkt|
           @artworks << artworkt
         end
+
+        @artworks = @artworks.to_a.uniq
       end
 
 
         set_filters(params[:author_show], params[:authors_filter], params[:topic], params[:country], params[:nivel_id])
+
 
       @artworks = @artworks.paginate(:page => params[:page], :per_page => 30)
     else
