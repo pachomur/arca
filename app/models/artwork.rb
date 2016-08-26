@@ -215,6 +215,7 @@ class Artwork < ActiveRecord::Base
   def self.b_author(search)
     if not search.to_s.empty?
       joins('LEFT JOIN authors ON authors.id = artworks.author_id').where( 'authors.name LIKE ?', "%#{search}%")
+      joins('LEFT JOIN authors ON authors.id = artworks.author_id').where( 'authors.lastname LIKE ?', "%#{search}%")
     else
       nil
     end

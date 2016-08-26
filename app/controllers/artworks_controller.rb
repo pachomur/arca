@@ -96,13 +96,8 @@ class ArtworksController < ApplicationController
 
 
         set_filters(params[:author_show], params[:authors_filter], params[:topic], params[:country], params[:nivel_id])
-      page =1
-      if not params[:page].nil?
-        page = params[:page]
-      end
-      @artworks = WillPaginate::Collection.create(page,10, @artworks.length) do |pager|
-        pager.replace @artworks.to_a
-      end
+
+      @artworks = @artworks.paginate(:page => params[:page], :per_page => 30)
     else
       #Seccion de busqueda
       if params[:authors] == ('true')
