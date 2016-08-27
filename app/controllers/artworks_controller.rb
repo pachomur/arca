@@ -99,7 +99,7 @@ class ArtworksController < ApplicationController
 
         set_filters(params[:author_show], params[:authors_filter], params[:topic], params[:country], params[:nivel_id])
 
-
+      @total = @artworks.count
       @artworks = @artworks.paginate(:page => params[:page], :per_page => 30)
     else
       #Seccion de busqueda
