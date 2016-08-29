@@ -135,7 +135,7 @@ class Artwork < ActiveRecord::Base
 
   def self.b_synthesis(search)
     if not search.to_s.empty?
-      where( 'synthesis LIKE ?', "%#{search}%")
+      where( 'lower(synthesis) LIKE ?', "%#{search.downcase}%")
     else
       nil
     end
@@ -143,15 +143,40 @@ class Artwork < ActiveRecord::Base
 
   def self.b_country(search)
     if not search.to_s.empty?
-      joins('LEFT JOIN countries ON countries.id = artworks.origin_country_id').where( 'countries.name LIKE ?', "%#{search}%")
+      joins('LEFT JOIN countries ON countries.id = artworks.origin_country_id').where( 'lower(countries.name) LIKE ?', "%#{search.downcase}%")
     else
       all
     end
   end
 
+  def self.b_countryactual(search)
+    if not search.to_s.empty?
+      joins('LEFT JOIN countries ON countries.id = artworks.actual_country_id').where( 'lower(countries.name) LIKE ?', "%#{search.downcase}%")
+    else
+      all
+    end
+  end
+
+  def self.b_city(search)
+    if not search.to_s.empty?
+      joins('LEFT JOIN cities ON cities.id = artworks.origin_city_id').where( 'lower(cities.name) LIKE ?', "%#{search.downcase}%")
+    else
+      all
+    end
+  end
+
+  def self.b_cityactual(search)
+    if not search.to_s.empty?
+      joins('LEFT JOIN cities ON cities.id = artworks.actual_city_id').where( 'lower(cities.name) LIKE ?', "%#{search.downcase}%")
+    else
+      all
+    end
+  end
+
+
   def self.b_category_1(search)
     if not search.to_s.empty?
-      joins('LEFT JOIN categories ON category_1_id = categories.id').where( 'categories.name LIKE ?', "%#{search}%")
+      joins('LEFT JOIN categories ON category_1_id = categories.id').where( 'lower(categories.name) LIKE ?', "%#{search.downcase}%")
     else
       all
     end
@@ -159,7 +184,7 @@ class Artwork < ActiveRecord::Base
 
   def self.b_category_2(search)
     if not search.to_s.empty?
-      joins('LEFT JOIN categories ON category_2_id = categories.id').where( 'categories.name LIKE ?', "%#{search}%")
+      joins('LEFT JOIN categories ON category_2_id = categories.id').where( 'lower(categories.name) LIKE ?', "%#{search.downcase}%")
     else
       all
     end
@@ -167,7 +192,7 @@ class Artwork < ActiveRecord::Base
 
   def self.b_category_3(search)
     if not search.to_s.empty?
-      joins('LEFT JOIN categories ON category_3_id = categories.id').where( 'categories.name LIKE ?', "%#{search}%")
+      joins('LEFT JOIN categories ON category_3_id = categories.id').where( 'lower(categories.name) LIKE ?', "%#{search.downcase}%")
     else
       all
     end
@@ -175,14 +200,14 @@ class Artwork < ActiveRecord::Base
 
   def self.b_category_4(search)
     if not search.to_s.empty?
-      joins('LEFT JOIN categories ON category_4_id = categories.id').where( 'categories.name LIKE ?', "%#{search}%")
+      joins('LEFT JOIN categories ON category_4_id = categories.id').where( 'lower(categories.name) LIKE ?', "%#{search.downcase}%")
     else
       all
     end
   end
   def self.b_category_5(search)
     if not search.to_s.empty?
-      joins('LEFT JOIN categories ON category_5_id = categories.id').where( 'categories.name LIKE ?', "%#{search}%")
+      joins('LEFT JOIN categories ON category_5_id = categories.id').where( 'lower(categories.name) LIKE ?', "%#{search.downcase}%")
     else
       all
     end
@@ -190,7 +215,63 @@ class Artwork < ActiveRecord::Base
 
   def self.b_comment(search)
     if not search.to_s.empty?
-      where( 'comment LIKE ?', "%#{search}%")
+      where( 'lower(comment) LIKE ?', "%#{search.downcase}%")
+    else
+      nil
+    end
+  end
+
+  def self.b_donor(search)
+    if not search.to_s.empty?
+      joins('LEFT JOIN donors ON donor_id = donors.id').where( 'lower(donors.name) LIKE ?', "%#{search.downcase}%")
+    else
+      nil
+    end
+  end
+
+  def self.b_phylactery_billboards(search)
+    if not search.to_s.empty?
+      joins('LEFT JOIN phylactery_billboards ON phylactery_billboard_id = phylactery_billboards.id').where( 'lower(phylactery_billboards.name) LIKE ?', "%#{search.downcase}%")
+    else
+      nil
+    end
+  end
+
+  def self.b_iconographic_attributes(search)
+    if not search.to_s.empty?
+      joins('LEFT JOIN iconographic_attributes ON iconographic_attribute_id = iconographic_attributes.id').where( 'lower(iconographic_attributes.name) LIKE ?', "%#{search.downcase}%")
+    else
+      nil
+    end
+  end
+
+  def self.b_symbol (search)
+    if not search.to_s.empty?
+      joins('LEFT JOIN artwork_symbols_artworks ON artworks.id = artwork_symbols_artworks.artwork_id LEFT JOIN artwork_symbols ON artwork_symbols_artworks.artwork_symbol_id = artwork_symbols.id').where( 'lower(artwork_symbols.name) LIKE ?', "%#{search.downcase}%")
+    else
+      nil
+    end
+  end
+
+  def self.b_artwork_characters (search)
+    if not search.to_s.empty?
+      joins('LEFT JOIN artwork_characters ON artworks.id = artwork_characters.artwork_id LEFT JOIN characters ON artwork_characters.character_id = characters.id').where( 'lower(characters.name) LIKE ?', "%#{search.downcase}%")
+    else
+      nil
+    end
+  end
+
+  def self.b_artworks_body_gestures (search)
+    if not search.to_s.empty?
+      joins('LEFT JOIN artworks_body_gestures ON artworks.id = artworks_body_gestures.artwork_id LEFT JOIN body_gestures ON artworks_body_gestures.body_gesture_id = body_gestures.id').where( 'lower(body_gestures.name) LIKE ?', "%#{search.downcase}%")
+    else
+      nil
+    end
+  end
+
+  def self.b_annotationdate(search)
+    if not search.to_s.empty?
+      where( 'lower(annotation_date) LIKE ?', "%#{search.downcase.gsub(/\s+/, '')}%")
     else
       nil
     end
@@ -198,7 +279,7 @@ class Artwork < ActiveRecord::Base
 
   def self.b_scene(search)
     if not search.to_s.empty?
-      joins('LEFT JOIN scenes ON scenes.id = artworks.scene_id').where( 'scenes.name LIKE ?', "%#{search}%")
+      joins('LEFT JOIN scenes ON scenes.id = artworks.scene_id').where( 'lower(scenes.name) LIKE ?', "%#{search.downcase}%")
     else
       all
     end
@@ -206,7 +287,7 @@ class Artwork < ActiveRecord::Base
 
   def self.b_story_types(search)
     if not search.to_s.empty?
-      joins('LEFT JOIN story_types ON story_types.id = artworks.story_type_id').where( 'story_types.name LIKE ?', "%#{search}%")
+      joins('LEFT JOIN story_types ON story_types.id = artworks.story_type_id').where( 'lower(story_types.name) LIKE ?', "%#{search.downcase}%")
     else
       all
     end
@@ -214,8 +295,8 @@ class Artwork < ActiveRecord::Base
 
   def self.b_author(search)
     if not search.to_s.empty?
-      joins('LEFT JOIN authors ON authors.id = artworks.author_id').where( 'authors.name LIKE ?', "%#{search}%")
-      joins('LEFT JOIN authors ON authors.id = artworks.author_id').where( 'authors.lastname LIKE ?', "%#{search}%")
+      joins('LEFT JOIN authors ON authors.id = artworks.author_id').where( 'lower(authors.name) LIKE ?', "%#{search.downcase}%")
+      joins('LEFT JOIN authors ON authors.id = artworks.author_id').where( 'lower(authors.lastname) LIKE ?', "%#{search.downcase}%")
     else
       nil
     end
@@ -223,7 +304,7 @@ class Artwork < ActiveRecord::Base
 
   def self.search_author(search)
     if search
-      joins('LEFT JOIN authors ON authors.id = artworks.author_id').where( 'lower(authors.lastname) LIKE ?', "%#{search}%")
+      joins('LEFT JOIN authors ON authors.id = artworks.author_id').where( 'lower(authors.lastname) LIKE ?', "%#{search.downcase}%")
     else
       all
     end

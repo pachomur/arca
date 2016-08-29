@@ -33,6 +33,42 @@ class ArtworksController < ApplicationController
           @artworks << artworkt
         end
 
+        b_countryactual = Artwork.b_countryactual(params[:search])
+
+        b_countryactual.each do |artworkt|
+          @artworks << artworkt
+        end
+
+        b_donor = Artwork.b_donor(params[:search])
+
+        b_donor.each do |artworkt|
+          @artworks << artworkt
+        end
+
+        b_phylactery_billboards = Artwork.b_phylactery_billboards(params[:search])
+
+        b_phylactery_billboards.each do |artworkt|
+          @artworks << artworkt
+        end
+
+        b_symbol = Artwork.b_symbol(params[:search])
+
+        b_symbol.each do |artworkt|
+          @artworks << artworkt
+        end
+
+        b_artwork_characters = Artwork.b_artwork_characters(params[:search])
+
+        b_artwork_characters.each do |artworkt|
+          @artworks << artworkt
+        end
+
+        b_artworks_body_gestures = Artwork.b_artworks_body_gestures(params[:search])
+
+        b_artworks_body_gestures.each do |artworkt|
+          @artworks << artworkt
+        end
+
         b_category_1 = Artwork.b_category_1(params[:search])
 
         b_category_1.each do |artworkt|
@@ -72,6 +108,12 @@ class ArtworksController < ApplicationController
         b_comment = Artwork.b_comment(params[:search])
 
         b_comment.each do |artworkt|
+          @artworks << artworkt
+        end
+
+        b_annotationdate = Artwork.b_annotationdate(params[:search])
+
+        b_annotationdate.each do |artworkt|
           @artworks << artworkt
         end
 
