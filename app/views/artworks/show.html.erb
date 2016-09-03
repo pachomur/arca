@@ -178,26 +178,34 @@
             <label class="control-label col-sm-3">Escuela</label>
             <div class="col-sm-9"><%=@artwork.get_school_name%></div>
           </div>
-          <br>
           <div class="row">
-            <label class="control-label col-sm-3">Categoría 1</label>
-            <div class="col-sm-9"><%=@artwork.get_category_1_name%></div>
-          </div>
-          <div class="row">
-            <label class="control-label col-sm-3">Categoría 2</label>
-            <div class="col-sm-9"><%=@artwork.get_category_2_name%></div>
-          </div>
-          <div class="row">
-            <label class="control-label col-sm-3">Categoría 3</label>
-            <div class="col-sm-9"><%=@artwork.get_category_3_name%></div>
-          </div>
-          <div class="row">
-            <label class="control-label col-sm-3">Categoría 4</label>
-            <div class="col-sm-9"><%=@artwork.get_category_4_name%></div>
-          </div>
-          <div class="row">
-            <label class="control-label col-sm-3">Categoría 5</label>
-            <div class="col-sm-9"><%=@artwork.get_category_5_name%></div>
+            <label class="control-label col-sm-3">Clasificación</label>
+            <div class="col-sm-10">
+              <table class="table table-condensed table-hover table-striped">
+                <tbody>
+                <tr><td>
+                  <label class="control-label col-sm-3">Categoría 1</label>
+                  <div class="col-sm-9"><%=@artwork.get_category_1_name%></div>
+                </td></tr>
+                <tr><td>
+                  <label class="control-label col-sm-3">Categoría 2</label>
+                  <div class="col-sm-9"><%=@artwork.get_category_2_name%></div>
+                  </td></tr>
+                <tr><td>
+                  <label class="control-label col-sm-3">Categoría 3</label>
+                  <div class="col-sm-9"><%=@artwork.get_category_3_name%></div>
+                  </td></tr>
+                <tr><td>
+                  <label class="control-label col-sm-3">Categoría 4</label>
+                  <div class="col-sm-9"><%=@artwork.get_category_4_name%></div>
+                  </td></tr>
+                <tr><td>
+                  <label class="control-label col-sm-3">Categoría 5</label>
+                  <div class="col-sm-9"><%=@artwork.get_category_5_name%></div>
+                  </td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
           <br>
           <div class="row">
@@ -274,7 +282,7 @@
             <div class="col-sm-10">
               <table class="table table-condensed table-hover table-striped">
                 <tbody>
-                <% @artwork.engravings.each  do |e| %>
+                <% @artwork.engravings.order('name ASC').each  do |e| %>
                     <tr><td><%= e.name %></td></tr>
                 <% end %>
                 </tbody>
