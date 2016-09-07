@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :datosbasicos
+
   resources :places
 
   resources :cities

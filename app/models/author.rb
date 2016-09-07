@@ -20,5 +20,4 @@ class Author < ActiveRecord::Base
       "#{lastname}, #{name}"
     end
   end
-
 end
