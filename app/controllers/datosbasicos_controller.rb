@@ -4,7 +4,7 @@ class DatosbasicosController < ApplicationController
   respond_to :html
 
   def index
-    @datosbasicos = Datosbasico.all
+    @datosbasicos = Datosbasico.paginate(:page => params[:page]).order("titulo")
     respond_with(@datosbasicos)
   end
 

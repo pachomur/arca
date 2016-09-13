@@ -10,18 +10,24 @@ class ApplicationController < ActionController::Base
   def set_datos_basicos
     @datobasicos = Datosbasico.all
     @datobasicos.each do |dato|
-      case dato.titulo
-        when "Proyecto"
+      case dato.id
+        when 1
+          @tproyecto = dato.titulo
           @proyecto = dato.descripcion
-        when "Proposito"
+        when 2
+          @tproposito = dato.titulo
           @proposito = dato.descripcion
-        when "Espacio"
+        when 3
+          @tespacio = dato.titulo
           @espacio = dato.descripcion
-        when "Conjunto"
+        when 4
+          @tconjunto = dato.titulo
           @conjunto = dato.descripcion
-        when "Legal"
+        when 5
+          @tlegal = dato.titulo
           @legal = dato.descripcion
-        when "Citacion"
+        when 6
+          @tcitacion = dato.titulo
           @citacion = dato.descripcion
       end
     end

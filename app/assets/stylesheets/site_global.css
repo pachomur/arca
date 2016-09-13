@@ -30,10 +30,11 @@
 }
 
 div#contact_image{
-    background-color: #222;
-    background-image: url(../assets/map-image.png);
+    background-color: #FFFFFF;
+    background-image: url(../assets/pergamino.png);
     background-position: center;
     background-repeat: no-repeat;
+    background-size: 1000px 420px;
 }
 
 .navbar-shrink .nav li a{

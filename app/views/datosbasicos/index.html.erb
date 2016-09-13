@@ -1,16 +1,16 @@
-<h1>Listing datosbasicos</h1>
+<h1>Listing Datos básicos del home</h1>
 
-<table>
+<table class="table table-bordered table-condensed table-hover">
   <thead>
     <tr>
-      <th>Titulo</th>
-      <th>Seccion</th>
-      <th>Descripcion</th>
+      <th>Título</th>
+      <th>Sección</th>
+      <th>Descripción</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="list">
     <% @datosbasicos.each do |datosbasico| %>
       <tr>
         <td><%= datosbasico.titulo %></td>
@@ -18,7 +18,6 @@
         <td><%= datosbasico.descripcion %></td>
         <td><%= link_to 'Show', datosbasico %></td>
         <td><%= link_to 'Edit', edit_datosbasico_path(datosbasico) %></td>
-        <td><%= link_to 'Destroy', datosbasico, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +25,4 @@
 
 <br>
 
-<%= link_to 'New Datosbasico', new_datosbasico_path %>
+<%= link_to 'New Dato básico', new_datosbasico_path %>
