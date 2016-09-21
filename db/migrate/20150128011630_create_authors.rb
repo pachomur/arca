@@ -5,6 +5,7 @@ class CreateAuthors < ActiveRecord::Migration
       t.string :lastname
       t.text :biography
       t.text :activity
+      t.string :avatar_file_name
       t.timestamps
     end
   end
