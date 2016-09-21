@@ -156,7 +156,6 @@ class ArtworksController < ApplicationController
 
         #Define la cantidad de obras que se muestran en cada uno de los tipos de vistas
         buscar = true
-
         if not params[:topic].nil?
           params[:topic] == 'true' ? buscar = false : nil
           set_filters(params[:author_show], params[:authors_filter], nil, params[:country], params[:nivel_id])

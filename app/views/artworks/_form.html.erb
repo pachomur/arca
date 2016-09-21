@@ -41,6 +41,7 @@
           <%= f.collection_select :author_id, Author.all.order("lastname, name"), :id, :get_full_name,  {:prompt => 'Seleccione el author'} %>
           <%= f.collection_select :type_id, Type.order(:name), :id, :name,  {:prompt => 'Seleccione el tipo'} %>
           <%= f.collection_select :source_id, Source.order(:name), :id, :name,  {:prompt => 'Seleccione la fuente'} %>
+          <%= f.collection_select :passage_id, Passage.all.order("name"), :id, :name,  {:prompt => 'Seleccione el pasaje'} %>
           <div class="form-group">
             <%= f.label :signed, class: "control-label col-sm-2"%>
             <div class="col-md-10">

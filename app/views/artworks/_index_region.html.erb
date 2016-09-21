@@ -128,26 +128,32 @@
                         <!--</div>-->
                     <!--</div>-->
 
-                      <div class="panel panel-default" style="margin-top: 0px">
-                        <div class="panel-heading" role="tab" id="headingClasificacionLugar">
-                          <h4 class="panel-title">
-                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionLugar" href="#collapseClasificacionLugar" aria-expanded="false" aria-controls="collapseClasificacionLugar">
-                              + Clasificación
-                            </a>
-                          </h4>
-                        </div>
-                        <div id="collapseClasificacionLugar" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingClasificacionLugar">
-                          <div class="panel-body">
-                            <ul class="list-unstyled">
-                              <% @clasifications.each  do |objeto| %>
-                                  <li>
-                                    <%= link_to  "#{objeto.name}" ,artworks_path(:params => params.merge(:topic => objeto.id))  %>
-                                  </li>
-                              <% end %>
-                            </ul>
-                          </div>
+                    <div class="panel panel-default" style="margin-top: 0px">
+                      <div class="panel-heading" role="tab" id="headingClasificacionLugar">
+                        <h4 class="panel-title">
+                          <a class="collapsed" data-toggle="collapse" data-parent="#accordionLugar" href="#collapseClasificacionLugar" aria-expanded="false" aria-controls="collapseClasificacionLugar">
+                            + Clasificación
+                          </a>
+                        </h4>
+                      </div>
+                      <div id="collapseClasificacionLugar" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingClasificacionLugar">
+                        <div id="submenu" >
+                          <ul>
+                            <% @clasifications.each  do |objeto| %>
+                                <li>
+                                  <%= link_to_unless_current objeto.name, artworks_path(:params => params.merge(:topic => objeto.id, :nivel_id => objeto.ancestry)) %>
+                                  <div style="display:inline-block" class="panel-heading" role="tab" id="headingClasificacionLugar_<%= objeto.id %>">
+                                    <a class="collapsed" data-toggle="collapse" href="#collapseClasificacionLugar_<%= objeto.id %>" aria-expanded="false" aria-controls="collapseClasificacionLugar_<%= objeto.id %>">
+                                      +
+                                    </a>
+                                  </div>
+                                  <%= render 'children_iterator',  hijos: objeto.children, padre: objeto.id %>
+                                </li>
+                            <% end %>
+                          </ul>
                         </div>
                       </div>
+                    </div>
 
                   </div>
                 </div>
@@ -179,6 +185,7 @@
           var jsonData = <%= @json_countries.to_json.html_safe %>;
           var authors_filter ='<%= params[:authors_filter] %>';
           var topic ='<%= params[:topic] %>';
+          var nivel_id ='<%= params[:nivel_id] %>';
           $(function(){
               map = $('#world-map').vectorMap({
                           regionStyle: {
@@ -217,6 +224,9 @@
                               if (topic) {
                                   var link_obra = link_obra + "&" + "topic=" + topic
                               }
+                            if (nivel_id) {
+                              var link_obra = link_obra + "&" + "nivel_id=" + nivel_id
+                            }
                               window.location.href = link_obra
                           }
                       }

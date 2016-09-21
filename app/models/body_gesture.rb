@@ -10,7 +10,6 @@ class BodyGesture < ActiveRecord::Base
                     :default_url => ":style/missing.png",
                     :url => "/assets/imagenesGestos/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/assets/imagenesGestos/:id/:style/:basename.:extension"
-
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/gif", "image/png"]
 
   has_and_belongs_to_many :artworks
