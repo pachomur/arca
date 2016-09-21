@@ -7,7 +7,8 @@ class Author < ActiveRecord::Base
                                   :thumb => "100x100>"
                                 },
                     :default_url => ":style/missing.png",
-                    :path => "/system/artworks/avatars/:id/:style/:basename.:extension"
+                    :path => "/system/artworks/avatars/:id/:style/:basename.:extension",
+                    :url => "/assets/artworks/:id/:style/:basename.:extension"
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/gif", "image/png"]
 
   def get_full_name
