@@ -1,7 +1,7 @@
 class Author < ActiveRecord::Base
 
   has_many :artworks
-  nombre = :basename.rjust(9, '0')
+  nombre = :basename.to_s.rjust(9, '0')
   nombre = nombre.scan(/.{5}|.+/).join("/")
   has_attached_file :avatar,
                     :styles =>  {  :large => "500x500>",
