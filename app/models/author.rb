@@ -1,13 +1,14 @@
 class Author < ActiveRecord::Base
 
   has_many :artworks
+  bass = :basename.to_s
   has_attached_file :avatar,
                     :styles =>  {  :large => "500x500>",
                                   :medium => "300x300>",
                                   :thumb => "100x100>"
                                 },
                     :default_url => ":style/missing.png",
-                    :url => "/system/artworks/avatars/"+ :basename +":id/:style/:basename.:extension"
+                    :url => "/system/artworks/avatars/"+ bass +":id/:style/:basename.:extension"
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/gif", "image/png"]
 
   def get_full_name
