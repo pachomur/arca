@@ -69,6 +69,6 @@ class PassagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def passage_params
-      params.require(:passage).permit(:name)
+      params.require(:passage).permit(:name,:text,:history_type,:source)
     end
 end

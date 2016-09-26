@@ -41,7 +41,6 @@
           <%= f.collection_select :author_id, Author.all.order("lastname, name"), :id, :get_full_name,  {:prompt => 'Seleccione el author'} %>
           <%= f.collection_select :type_id, Type.order(:name), :id, :name,  {:prompt => 'Seleccione el tipo'} %>
           <%= f.collection_select :source_id, Source.order(:name), :id, :name,  {:prompt => 'Seleccione la fuente'} %>
-          <%= f.collection_select :passage_id, Passage.all.order("name"), :id, :name,  {:prompt => 'Seleccione el pasaje'} %>
           <div class="form-group">
             <%= f.label :signed, class: "control-label col-sm-2"%>
             <div class="col-md-10">
@@ -136,7 +135,8 @@
     <div class="tab-pane fade in" id="personajes">
       <div class="row">
         <div class="col-md-6">
-
+          <%= f.collection_select :passage_id, Passage.all.order("name"), :id, :name,  {:prompt => 'Seleccione el pasaje'} %>
+          <br>
           <table class="table table-condensed table-hover table-striped">
             <tbody>
               <% @artwork.characters.each  do |sym| %>
@@ -145,7 +145,6 @@
             </tbody>
            </table>
           <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#perModal">Modificar Personajes</button>
-
         </div>
       </div>
     </div>

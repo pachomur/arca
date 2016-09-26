@@ -1,8 +1,20 @@
 <p id="notice"><%= notice %></p>
-
+<br>
 <p>
-  <strong>Name:</strong>
+  <strong>Nombre:</strong>
   <%= @passage.name %>
+</p>
+<p>
+  <strong>Pasaje:</strong>
+  <%= @passage.text %>
+</p>
+<p>
+  <strong>Tipo de historia:</strong>
+  <%= @passage.history_type %>
+</p>
+<p>
+  <strong>Fuente:</strong>
+  <%= @passage.source %>
 </p>
 
 <%= link_to 'Edit', edit_passage_path(@passage) %> |

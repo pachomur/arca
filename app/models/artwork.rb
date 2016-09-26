@@ -141,6 +141,14 @@ class Artwork < ActiveRecord::Base
     end
   end
 
+  def self.b_id(search)
+    if not search.to_s.empty?
+      where( 'id = ?', "#{search.downcase}")
+    else
+      nil
+    end
+  end
+
   def self.b_country(search)
     if not search.to_s.empty?
       joins('LEFT JOIN countries ON countries.id = artworks.origin_country_id').where( 'lower(countries.name) LIKE ?', "%#{search.downcase}%")

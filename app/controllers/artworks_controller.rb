@@ -33,6 +33,12 @@ class ArtworksController < ApplicationController
           @artworks << artworkt
         end
 
+        b_id= Artwork.b_id(params[:search])
+
+        b_id.each do |artworkt|
+          @artworks << artworkt
+        end
+
         b_countryactual = Artwork.b_countryactual(params[:search])
 
         b_countryactual.each do |artworkt|
