@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'application/tableau'
+
   resources :datosbasicos
 
   resources :places
@@ -53,6 +55,7 @@ Rails.application.routes.draw do
     end
 
     resources :artworks, except: [:index, :show]
+
   end
 
   resources :artworks do
