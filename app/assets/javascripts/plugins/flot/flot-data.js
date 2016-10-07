@@ -4,12 +4,6 @@ $(document).ready(function() {
     var offset = 0;
     plot();
 
-    $(".modal").each(function(i) {
-        $(this).draggable({
-            handle: ".modal-header"
-        });
-    });
-
     function plot() {
         var sin = [],
             cos = [];

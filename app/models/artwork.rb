@@ -142,7 +142,7 @@ class Artwork < ActiveRecord::Base
   end
 
   def self.b_id(search)
-    if not search.to_s.empty?
+    if search =~ /\A\d+\z/? true : false
       where( 'id = ?', "#{search.downcase}")
     else
       nil

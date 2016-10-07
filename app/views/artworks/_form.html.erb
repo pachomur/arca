@@ -223,16 +223,6 @@
       </div>
     </div>
     <!-- Modal for gestos view -->
-    <head>
-      <meta charset="utf-8">
-      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-      <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-      <script>
-        $( function() {
-          $( "#gestosModal" ).draggable();
-        } );
-      </script>
-    </head>
     <div class="modal fade" id="gestosModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -384,7 +374,7 @@
         jQuery.removeData(jQuery('#zoomableImage'), 'elevateZoom');//remove zoom instance from image
         jQuery('.zoomContainer').remove();// remove zoom container from DOM
       });
-              
+
         //Google maps
         function initialize() {
             infowindow = new google.maps.InfoWindow();
