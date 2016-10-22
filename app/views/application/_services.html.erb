@@ -4,75 +4,80 @@
     <div class="row">
       <div class="col-lg-12 text-center">
         <h2 class="section-heading">Archivos</h2>
+        <br>
         <!--<h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>-->
       </div>
     </div>
     <div class="row text-center">
       <div class="col-md-4">
         <div style="text-align:center; width:50%; margin: auto;">
-            <span class="fa" style="height:100%">
+            <span class="" style="height:100%">
             <a href="<%= artworks_path(:topic=>true) %>" class="portfolio-link" data-toggle="modal">
                 <img src= "<%= image_url'archivos/Tema.png' %>" class="img-circle img-responsive" alt="">
             </a>
         </span>
         </div>
-
+        <br>
         <h4 class="service-heading">Temas</h4>
         <p class="text-muted">Búsqueda de obras por temas.</p>
       </div>
       <div class="col-md-4">
-                    <div style="text-align:center; width:50%; margin: auto;">
-                    <span class="" style="height:100%">
-                        <a href="<%= artworks_path(:authors=>true) %>" class="portfolio-link" data-toggle="modal">
-                          <img src= "<%= image_url'archivos/artista.png' %>" class="img-circle img-responsive" alt="">
-                        </a>
-                    </span>
-                    </div>
+        <div style="text-align:center; width:50%; margin: auto;">
+          <span class="" style="height:100%">
+              <a href="<%= artworks_path(:authors=>true) %>" class="portfolio-link" data-toggle="modal">
+                <img src= "<%= image_url'archivos/artista.png' %>" class="img-circle img-responsive" alt="">
+              </a>
+          </span>
+        </div>
+        <br>
         <h4 class="service-heading">Autores</h4>
         <p class="text-muted">Búsqueda de obras por autores.</p>
       </div>
       <div class="col-md-4">
-                    <div style="text-align:center; width:50%; margin: auto;">
-                    <span class="fa" style="height:100%">
-                      <a href="<%= artworks_path(:region=>true) %>" class="portfolio-link" data-toggle="modal">
-                        <img src= "<%= image_url'archivos/Regiones.png' %>" class="img-circle img-responsive" alt="">
-                      </a>
-                    </span>
-                    
-                    </div>
-                    <h4 class="service-heading">Regiones</h4>
-                    <p class="text-muted">Búsqueda de obras por regiones.</p>
+        <div style="text-align:center; width:50%; margin: auto;">
+          <span class="" style="height:100%">
+            <a href="<%= artworks_path(:region=>true) %>" class="portfolio-link" data-toggle="modal">
+              <img src= "<%= image_url'archivos/Regiones.png' %>" class="img-circle img-responsive" alt="">
+            </a>
+          </span>
+          <br>
+        </div>
+        <h4 class="service-heading">Regiones</h4>
+        <p class="text-muted">Búsqueda de obras por regiones.</p>
       </div>
     </div>
     <div class="row">
       <div class="col-lg-12 text-center">
+        <br>
         <h2 class="section-heading">Big data</h2>
+        <br>
       </div>
     </div>
-    <div class="row text-center">
-      <div class="col-lg-12 text-center">
-        <div style="text-align:center; width:25%; margin: auto;">
-            <span class="fa" style="height:100%">
+    <div class="row text-center" style="margin-left: 25%">
+      <div class="col-md-4">
+        <div style="text-align:center; width:50%; margin: auto;">
+            <span class="" style="height:100%">
             <a href="<%= application_tableau_path %>" class="portfolio-link" data-toggle="modal">
                 <img src= "<%= image_url'archivos/tableau.png' %>" class="img-circle img-responsive" alt="">
             </a>
-        </span>
+            </span>
+            <br>
         </div>
-
         <h4 class="service-heading">Dashboard ARCA</h4>
         <p class="text-muted">Visualización interactiva.</p>
       </div>
-      <!--<div class="col-md-4">
+      <div class="col-md-4">
         <div style="text-align:center; width:50%; margin: auto;">
-                    <span class="" style="height:100%">
-                        <a href="<%= artworks_path(:authors=>true) %>" class="portfolio-link" data-toggle="modal">
-                          <img src= "<%= image_url'archivos/gephi.png' %>" class="img-circle img-responsive" alt="">
-                        </a>
-                    </span>
+          <span class="" style="height:100%">
+              <a href="<%= application_gephi_path %>" class="portfolio-link" data-toggle="modal">
+                <img src= "<%= image_url'archivos/gephi.png' %>" class="img-circle img-responsive" alt="">
+              </a>
+          </span>
+          <br>
         </div>
-        <h4 class="service-heading">Redes</h4>
-        <p class="text-muted">Red dinámica de obras y autores.</p>
-      </div>-->
+        <h4 class="service-heading">Gráfos</h4>
+        <p class="text-muted">Diagramas de fuerzas.</p>
+      </div>
     </div>
   </div>
 </section>

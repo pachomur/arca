@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'application/gephi'
+
   get 'application/tableau'
 
   resources :datosbasicos

@@ -29,6 +29,7 @@ class ApplicationController < ActionController::Base
           @citacion = dato.descripcion
       end
     end
+    @archivo = "/assets/prueba.json";
   end
 
 end
