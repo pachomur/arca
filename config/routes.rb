@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'application/gephi'
+  get 'gephis/index', :as => 'gephi'
 
   get 'application/tableau'
 

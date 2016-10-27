@@ -89,4 +89,3 @@ gem 'rails_12factor', group: :production
 # gem 'debugger', group: [:development, :test]
 
 gem 'coffee-script-source', '1.8.0'
-
