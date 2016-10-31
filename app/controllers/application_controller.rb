@@ -27,6 +27,9 @@ class ApplicationController < ActionController::Base
         when 6
           @tcitacion = dato.titulo
           @citacion = dato.descripcion
+        when 7
+          @tacerca = dato.titulo
+          @acerca = dato.descripcion
       end
     end
   end

@@ -29,25 +29,25 @@
           <a href="#page-top"></a>
         </li>
         <li>
-          <a class="page-scroll" href="#services">Archivos</a>
+          <a class="page-scroll" href="#services" style="font-weight: bolder; font-family: Gotham-Light;">Archivos</a>
         </li>
         <li>
-          <a class="page-scroll" href="#about">Acerca de la base de datos</a>
+          <a class="page-scroll" href="#tools" style="font-weight: bolder; font-family: Gotham-Light;">Herramientas</a>
         </li>
         <li>
-          <%= link_to "Herramientas", artworks_path+"?time_line=true", class: "page-scroll" %>
+          <a class="page-scroll" href="#about" style="font-weight: bolder; font-family: Gotham-Light;">Acerca de la base de datos</a>
         </li>
         <li>
-          <a class="page-scroll" href="#team">Legal</a>
+          <a class="page-scroll" href="#team" style="font-weight: bolder; font-family: Gotham-Light;">Legal</a>
         </li>
         <li>
-          <a class="page-scroll" href="#contact">Contacto</a>
+          <a class="page-scroll" href="#contact" style="font-weight: bolder; font-family: Gotham-Light;">Contacto</a>
         </li>
         <li>
-          <a type="href" data-toggle="modal" data-target="#myModal" href="#">Citación</a>
+          <a type="href" data-toggle="modal" data-target="#myModal" href="#" style="font-weight: bolder; font-family: Gotham-Light;">Citación</a>
         </li>
         <li>
-          <a type="href" data-toggle="modal" data-target="#modlogin" href="#">Login</a>
+          <a type="href" data-toggle="modal" data-target="#modlogin" href="#" style="font-weight: bolder; font-family: Gotham-Light;">Login</a>
         </li>
       </ul>
     </div>
@@ -70,13 +70,13 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><%=@tcitacion%></h4>
+        <h4 class="modal-title" id="myModalLabel" style="font-family: Gotham-Light; font-weight: bolder"><%=@tcitacion%></h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" style="font-family: Gotham-Light; font-weight: bolder">
         <%=@citacion%>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-default" style="font-family: Gotham-Light; font-weight: bolder" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>

@@ -471,7 +471,6 @@ class ArtworksController < ApplicationController
       @countries = Country.filtros_place(author_id, author_lastname, category_id, country_id, nivel_id)
       @artworks = Artwork.filtros(author_id, author_lastname, category_id, country_id, nivel_id)
     end
-    @clasifications.parent = Category.find(params[:parent_id]) unless params[:parent_id] == nil
   end
 
 end
