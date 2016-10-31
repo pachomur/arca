@@ -1,0 +1,320 @@
+<script src="/assets/src/sigma.core.js"></script>
+<script src="/assets/src/conrad.js"></script>
+<script src="/assets/src/utils/sigma.utils.js"></script>
+<script src="/assets/src/utils/sigma.polyfills.js"></script>
+<script src="/assets/src/sigma.settings.js"></script>
+<script src="/assets/src/classes/sigma.classes.dispatcher.js"></script>
+<script src="/assets/src/classes/sigma.classes.configurable.js"></script>
+<script src="/assets/src/classes/sigma.classes.graph.js"></script>
+<script src="/assets/src/classes/sigma.classes.camera.js"></script>
+<script src="/assets/src/classes/sigma.classes.quad.js"></script>
+<script src="/assets/src/classes/sigma.classes.edgequad.js"></script>
+<script src="/assets/src/captors/sigma.captors.mouse.js"></script>
+<script src="/assets/src/captors/sigma.captors.touch.js"></script>
+<script src="/assets/src/renderers/sigma.renderers.canvas.js"></script>
+<script src="/assets/src/renderers/sigma.renderers.webgl.js"></script>
+<script src="/assets/src/renderers/sigma.renderers.svg.js"></script>
+<script src="/assets/src/renderers/sigma.renderers.def.js"></script>
+<script src="/assets/src/renderers/webgl/sigma.webgl.nodes.def.js"></script>
+<script src="/assets/src/renderers/webgl/sigma.webgl.nodes.fast.js"></script>
+<script src="/assets/src/renderers/webgl/sigma.webgl.edges.def.js"></script>
+<script src="/assets/src/renderers/webgl/sigma.webgl.edges.fast.js"></script>
+<script src="/assets/src/renderers/webgl/sigma.webgl.edges.arrow.js"></script>
+<script src="/assets/src/renderers/canvas/sigma.canvas.labels.def.js"></script>
+<script src="/assets/src/renderers/canvas/sigma.canvas.hovers.def.js"></script>
+<script src="/assets/src/renderers/canvas/sigma.canvas.nodes.def.js"></script>
+<script src="/assets/src/renderers/canvas/sigma.canvas.edges.def.js"></script>
+<script src="/assets/src/renderers/canvas/sigma.canvas.edges.curve.js"></script>
+<script src="/assets/src/renderers/canvas/sigma.canvas.edges.arrow.js"></script>
+<script src="/assets/src/renderers/canvas/sigma.canvas.edges.curvedArrow.js"></script>
+<script src="/assets/src/renderers/canvas/sigma.canvas.edgehovers.def.js"></script>
+<script src="/assets/src/renderers/canvas/sigma.canvas.edgehovers.curve.js"></script>
+<script src="/assets/src/renderers/canvas/sigma.canvas.edgehovers.arrow.js"></script>
+<script src="/assets/src/renderers/canvas/sigma.canvas.edgehovers.curvedArrow.js"></script>
+<script src="/assets/src/renderers/canvas/sigma.canvas.extremities.def.js"></script>
+<script src="/assets/src/renderers/svg/sigma.svg.utils.js"></script>
+<script src="/assets/src/renderers/svg/sigma.svg.nodes.def.js"></script>
+<script src="/assets/src/renderers/svg/sigma.svg.edges.def.js"></script>
+<script src="/assets/src/renderers/svg/sigma.svg.edges.curve.js"></script>
+<script src="/assets/src/renderers/svg/sigma.svg.labels.def.js"></script>
+<script src="/assets/src/renderers/svg/sigma.svg.hovers.def.js"></script>
+<script src="/assets/src/middlewares/sigma.middlewares.rescale.js"></script>
+<script src="/assets/src/middlewares/sigma.middlewares.copy.js"></script>
+<script src="/assets/src/misc/sigma.misc.animation.js"></script>
+<script src="/assets/src/misc/sigma.misc.bindEvents.js"></script>
+<script src="/assets/src/misc/sigma.misc.bindDOMEvents.js"></script>
+<script src="/assets/src/misc/sigma.misc.drawHovers.js"></script>
+<script src="/assets/src/main.js"></script>
+<script src="/assets/src/jquery.fancybox.pack.js"></script>
+<script src="/assets/sigma.js?body=1"></script>
+<script src="/assets/sigma.parsers.json.min.js?body=1"></script>
+<script src="/assets/sigma.parsers.gexf.min.js?body=1"></script>
+<script src="/assets/sigma.plugins.neighborhoods.min.js?body=1"></script>
+<script src="/assets/supervisor.js?body=1"></script>
+<script src="/assets/worker.js?body=1"></script>
+<script src="/assets/jquery-2.1.1.min.js?body=1"></script>
+<script src="/assets/plugins/sigma.plugins.animate.js"></script>
+<script src="/assets/plugins/sigma.layout.forceAtlas2.min.js"></script>
+<script src="/assets/plugins/sigma.plugins.dragNodes.js"></script>
+<script src="/assets/src/renderers/canvas/settings.js"></script>
+<script src="/assets/src/renderers/canvas/sigma.canvas.edges.labels.def.js"></script>
+<script src="/assets/src/renderers/canvas/sigma.canvas.edges.labels.curve.js"></script>
+<script src="/assets/src/renderers/canvas/sigma.canvas.edges.labels.curvedArrow.js"></script>
+<section id="grafo">
+  <h1>Diagrama de fuerzas</h1>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <!--<h2 class="section-heading">Déjenos su comentario</h2>-->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-2">
+          <div class="form-group">
+            <label>Elegir grafo:</label><br>
+            <%= collection_select(nil, :grafo_id, @gephis, :id, :nombregrafo, {:prompt   => "Seleccione un grafo"}, {:id => 'grafos_select'}) %><br><br>
+            <label>Controles sobre grafos:</label><br>
+            <a href="#" id="acercar" class="button" title="Reset graph to initial zoom position.">- Acercar</a><br>
+            <a href="#" id="alejar" class="button" title="Reset graph to initial zoom position.">- Alejar</a><br>
+            <a href="#" id="recenter-camera" class="button" title="Reiniciar el zoom a la posición inicial.">- Reiniciar zoom</a><br><br>
+            <label>Ocultar:</label>
+            <label title="Dibujar solo vínculos fuertes.">
+              <input type="checkbox" id="showSparse" />
+              Vínculos débiles
+            </label>
+            <label title="Mostrar número de obras.">
+              <input type="checkbox" id="showEdgeLabels" />
+              Número de obras
+            </label>
+          </div>
+          <div class="form-group">
+            <label>Aplicar fuerzas mediante <%= link_to "ForceAtlas2", "http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0098679#s2" , :target => "_blank" %>:</label><br>
+            <a href="#" id="Comenzar" class="button" title="Comenzar a diagramar fuerzas.">- Comenzar</a><br>
+            <a href="#" id="Detener" class="button" title="Detener fuerzas.">- Detener</a><br><br>
+            <br>
+            <br>
+            <br>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <div id="sigma-container" style='position: fixed; width: 70%; height: 70%;'></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  $(document).ready(function() {
+    $('#grafos_select').change(function() {
+      val = $(this).val();
+      window.location = '/gephis/index?archivo='+ val;
+      });
+  });
+</script>
+<script>
+  var g = {
+    nodes: [],
+    edges: []
+  };
+  sigma.renderers.def = sigma.renderers.canvas;
+  var s = new sigma({
+    graph: g,
+
+  });
+
+  sigma.classes.graph.addMethod('neighbors', function(nodeId) {
+    var k,
+        neighbors = {},
+        index = this.allNeighborsIndex[nodeId] || {};
+
+    for (k in index)
+      neighbors[k] = this.nodesIndex[k];
+
+    return neighbors;
+  });
+  init();
+  function init() {
+    sigma.parsers.json('<%= @archivo %>', {container: 'sigma-container'},
+        function (s) {
+          s.settings({
+            doubleClickEnabled: false,
+            enableEdgeHovering: true,
+            edgeHoverColor: '#FF0000',
+            defaultEdgeHoverColor: '#FF0000',
+            edgeHoverSizeRatio: 3,
+            edgeHoverExtremities: true,
+            borderSize: 2,
+            defaultNodeBorderColor: '#FF0000',
+            minEdgeSize: 1,
+            maxEdgeSize: 10,
+            edgeLabelSize: 'proportional'
+          });
+          s.refresh();
+          s.graph.nodes().forEach(function (n) {
+            n.originalColor = n.color;
+          });
+          s.graph.edges().forEach(function (e) {
+            e.originalColor = e.color;
+            e.type = 'curvedArrow';
+          });
+          s.refresh();
+          s.bind('clickNode', function (e) {
+            var nodeId = e.data.node.id,
+                toKeep = s.graph.neighbors(nodeId);
+            toKeep[nodeId] = e.data.node;
+
+            s.graph.nodes().forEach(function (n) {
+              if (toKeep[n.id])
+                n.color = n.originalColor;
+              else
+                n.color = '#eee';
+            });
+
+            s.graph.edges().forEach(function (e) {
+              if (toKeep[e.source] && toKeep[e.target]) {
+                e.color = e.originalColor;
+                e.type = 'curvedArrow';
+              }
+              else {
+                e.color = '#eee';
+                e.type = 'curvedArrow';
+              }
+            });
+            s.refresh();
+          });
+
+          // Click sobre el fondo
+          s.bind('clickStage', function (e) {
+            s.graph.nodes().forEach(function (n) {
+              n.color = n.originalColor;
+            });
+
+            s.graph.edges().forEach(function (e) {
+              e.color = e.originalColor;
+              e.type = 'curvedArrow';
+            });
+            s.refresh();
+          });
+          //Force atlas
+          document.getElementById('Comenzar').addEventListener('click',
+              function () {
+                s.startForceAtlas2();
+              });
+          document.getElementById('Detener').addEventListener('click',
+              function () {
+                s.stopForceAtlas2();
+              });
+          // reset zoom
+          //
+          document.getElementById('recenter-camera').addEventListener('click',
+              function () {
+                s.cameras[0].goTo({
+                  x: 0,
+                  y: 0,
+                  angle: 0,
+                  ratio: 1
+                });
+              });
+
+          var c = s.camera;
+
+          // Zoom out - single frame :
+          document.getElementById('alejar').addEventListener('click',
+              function () {
+                c.goTo({
+                  ratio: c.ratio * c.settings('zoomingRatio')
+                });
+              });
+
+          // Zoom in - single frame :
+          document.getElementById('acercar').addEventListener('click',
+              function () {
+                c.goTo({
+                  ratio: c.ratio / c.settings('zoomingRatio')
+                });
+              });
+
+          // Ocultar vínculos débiles
+          document.getElementById('showSparse').addEventListener('change',
+              function(e){
+                var sum = 0;
+                s.graph.edges().forEach(function(e) {
+                  sum = sum + e.weight;
+                });
+                sum = sum / s.graph.edges().length;
+                if (e.target.checked) {
+                  s.graph.edges().forEach(function(e) {
+                    // use upper quartile marker
+                    if(e.weight < sum)
+                      e.color = 'rgba(66,66,66,0)';
+                  });
+                  s.settings({
+                    doubleClickEnabled: false,
+                    enableEdgeHovering: true,
+                    edgeHoverColor: '#FF0000',
+                    defaultEdgeHoverColor: '#FF0000',
+                    edgeHoverSizeRatio: 3,
+                    edgeHoverExtremities: true,
+                    borderSize: 2,
+                    defaultNodeBorderColor: '#FF0000',
+                    minEdgeSize: 0,
+                    maxEdgeSize: 2.7,
+                    edgeLabelSize: 'proportional'
+                  });
+                } else {
+                  s.graph.edges().forEach(function(e) {
+                    e.color = e.originalColor;
+                  });
+                  s.settings({
+                    doubleClickEnabled: false,
+                    enableEdgeHovering: true,
+                    edgeHoverColor: '#FF0000',
+                    defaultEdgeHoverColor: '#FF0000',
+                    edgeHoverSizeRatio: 3,
+                    edgeHoverExtremities: true,
+                    borderSize: 2,
+                    defaultNodeBorderColor: '#FF0000',
+                    minEdgeSize: 1,
+                    maxEdgeSize: 10,
+                    edgeLabelSize: 'proportional'
+                  });
+                }
+                s.refresh();
+              });
+
+          // Ocultar etiquetas de vínculos
+          document.getElementById('showEdgeLabels').addEventListener('change',
+              function(e){
+                if (e.target.checked) {
+                  s.settings({
+                    drawEdgeLabels: false
+                  });
+                } else {
+                  s.settings({
+                    drawEdgeLabels: true
+                  });
+                }
+                s.refresh();
+              });
+        }
+    );
+  }
+  // Initialize the dragNodes plugin:
+  var dragListener = sigma.plugins.dragNodes(s, s.renderers[0]);
+  dragListener.bind('startdrag', function(event) {
+    console.log(event);
+  });
+  dragListener.bind('drag', function(event) {
+    console.log(event);
+  });
+  dragListener.bind('drop', function(event) {
+    console.log(event);
+  });
+  dragListener.bind('dragend', function(event) {
+    console.log(event);
+  });
+  s.refresh();
+</script>
