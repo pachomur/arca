@@ -241,7 +241,7 @@
                             padding: 5px;
                             text-align: center;">
                           <div>
-                          <%= image_tag gesto.image.url(:thumb) %>
+                          <%= image_tag gesto.image.url(:small) %>
                           </div>
                           <%= check_box_tag "artwork[body_gesture_ids][]", gesto.id, @artwork.body_gestures.include?(gesto) %>
                           <%= gesto.name %>
