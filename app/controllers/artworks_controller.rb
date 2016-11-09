@@ -46,6 +46,18 @@ class ArtworksController < ApplicationController
           @artworks << artworkt
         end
 
+        b_city= Artwork.b_city(params[:search])
+
+        b_city.each do |artworkt|
+          @artworks << artworkt
+        end
+
+        b_cityactual= Artwork.b_cityactual(params[:search])
+
+        b_cityactual.each do |artworkt|
+          @artworks << artworkt
+        end
+
         b_donor = Artwork.b_donor(params[:search])
 
         b_donor.each do |artworkt|
@@ -133,6 +145,12 @@ class ArtworksController < ApplicationController
         b_story_types = Artwork.b_story_types(params[:search])
 
         b_story_types.each do |artworkt|
+          @artworks << artworkt
+        end
+
+        b_types = Artwork.b_types(params[:search])
+
+        b_types.each do |artworkt|
           @artworks << artworkt
         end
 

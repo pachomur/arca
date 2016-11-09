@@ -30,6 +30,15 @@ class ApplicationController < ActionController::Base
         when 7
           @tacerca = dato.titulo
           @acerca = dato.descripcion
+        when 8
+          @tcitation = dato.titulo
+          @citation = dato.descripcion
+        when 9
+          @tbibliography = dato.titulo
+          @bibliography = dato.descripcion
+        when 10
+          @tcontacto = dato.titulo
+          @contacto = dato.descripcion
       end
     end
   end

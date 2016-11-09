@@ -62,8 +62,15 @@
     <a type="href" data-toggle="modal" data-target="#imageModal" href="">
       <%= image_tag(@artwork.avatar.url(:large), :class => "img-thumbnail", :class => "img-responsive", :style => "margin-left: auto; margin-right: auto;") %>
     </a>
-    <div class="img_title"><h3 style="color: #000000;   text-align: right;">Id:<%= @artwork.id %></h3><%= @artwork.get_title  %><br><%= @artwork.get_author_name  %><br> Fecha: <%= @artwork.get_annotation_date%></div>
-    <%= link_to 'Download', @artwork.avatar.url %>
+    <div class="img_title">
+      <h3 style="color: #000000;   text-align: right;">Id:<%= @artwork.id %></h3>
+      <div style="font-style: normal">
+        <%= @artwork.get_title  %><br>
+        <%= @artwork.get_author_name  %><br>
+        Fecha: <%= @artwork.get_annotation_date%>
+      </div>
+      </div>
+      <%= link_to 'Download', @artwork.avatar.url %>
     <br>
     <br>
     <div class="row">
@@ -150,12 +157,12 @@
             <div class="col-sm-9"><%=@artwork.get_type_name%></div>
           </div>
           <div class="row">
-            <label class="control-label col-sm-3">Fuente</label>
+            <label class="control-label col-sm-3">Fuente de la imágen</label>
             <div class="col-sm-9"><%=@artwork.get_source_name%></div>
           </div>
           <br>
           <div class="row">
-            <label class="control-label col-sm-3">Procedencia</label>
+            <label class="control-label col-sm-3">Ubicación</label>
             <div class="col-sm-9"><%=@artwork.get_place%></div>
           </div>
           <div class="row">
@@ -178,6 +185,7 @@
             <label class="control-label col-sm-3">Escuela</label>
             <div class="col-sm-9"><%=@artwork.get_school_name%></div>
           </div>
+          <br>
           <div class="row">
             <label class="control-label col-sm-3">Clasificación</label>
             <div class="col-sm-10">
@@ -300,18 +308,17 @@
 
               </div>
           <div class="row">
-            <label class="control-label col-sm-3">Gestos:</label>
+            <label class="control-label col-sm-3">Gestos:</label><br>
+            <br><p align="justify">La cultura barroca es gestual. El gesto complementaba la comunicación visual con gestos de oralidad, de modo que las pinturas “hablaban”. La siguiente información trata de reconstruir la cultura gestual quirológica y quironómica a partir de los tratados y de las frecuencias gestuales en la pintura colonial.</p>
             <div class="col-sm-10">
               <table class="table table-condensed table-hover table-striped">
                 <tbody>
-
                 <% @artwork.body_gestures.each  do |sym| %>
                     <tr>
-                      <td><%= image_tag sym.image.url(:thumb) %>
-                      <%= sym.name %></td>
+                      <td><%= image_tag sym.image.url(:thumb) %></td>
+                      <td><%= sym.name %></td>
                     </tr>
                 <% end %>
-
                 </tbody>
               </table>
             </div>

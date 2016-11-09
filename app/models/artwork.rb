@@ -301,6 +301,14 @@ class Artwork < ActiveRecord::Base
     end
   end
 
+  def self.b_types(search)
+    if not search.to_s.empty?
+      joins('LEFT JOIN types ON types.id = artworks.type_id').where( 'lower(types.name) LIKE ?', "%#{search.downcase}%")
+    else
+      all
+    end
+  end
+
   def self.b_author(search)
     if not search.to_s.empty?
       joins('LEFT JOIN authors ON authors.id = artworks.author_id').where( 'lower(authors.name) LIKE ?', "%#{search.downcase}%")
