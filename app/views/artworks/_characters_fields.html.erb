@@ -1,0 +1,8 @@
+<fieldset>
+  <%= ff.text_area :name, label: "Personaje"  , :size => "30x5"%>
+  <!--<%= ff.date_field :death_date, label: "Muerte"  , :size => "30x1"%>-->
+  <!--<%= ff.date_field :beatification_date, label: "Beatificación"  , :size => "30x1"%>-->
+  <!--<%= ff.date_field :canonization_date, label: "Canonización"  , :size => "30x1"%>-->
+  <%= ff.hidden_field :_destroy %>
+  <%= link_to "Quitar personaje","#", class:"remove_fields" %>
+</fieldset>

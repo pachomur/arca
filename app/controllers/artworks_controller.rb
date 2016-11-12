@@ -348,12 +348,13 @@ class ArtworksController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def artwork_params
-    params.require(:artwork).permit(:passage_id, :color, :place_id,  :origin_country_id, :actual_country_id, :scene_id, :source_id, :origin_city_id,:character,:character_ids, :actual_city_id, :donor_id, :category_1_id, :category_2_id, :category_3_id, :category_4_id, :category_5_id,
+    params.require(:artwork).permit(:passage_id, :color, :place_id,  :origin_country_id, :actual_country_id, :scene_id, :source_id, :origin_city_id, :actual_city_id, :donor_id, :category_1_id, :category_2_id, :category_3_id, :category_4_id, :category_5_id,
                                     :phylactery_billboard_id,:iconographic_attribute_id, :story_type_id, :school_id,:author_id, :title, :activity, :biographic_data, :signed, :synthesis,
                                     :biographic_comment, :annotation, :avatar, :sub_image, :comment,
                                     :latitude_origin,:latitude_current,:longitude_origin,:longitude_current, :type_id,
                                     :creation_date, :annotation_date,
                                     descriptions_attributes:[:id,:description,:_destroy],
+                                    characters_attributes:[:id,:name,:_destroy],
                                     body_gestures_attributes:[:id,:name,:igesto, :_destroy],
                                     author_attributes:[:id,:name,:_destroy],
                                     iconographic_attribute_attributes:[:id,:name,:_destroy],
