@@ -141,6 +141,22 @@ class Artwork < ActiveRecord::Base
     end
   end
 
+  def self.b_biographic_comment(search)
+    if not search.to_s.empty?
+      where( 'lower(biographic_comment) LIKE ?', "%#{search.downcase}%")
+    else
+      nil
+    end
+  end
+
+  def self.b_biographic_data(search)
+    if not search.to_s.empty?
+      where( 'lower(biographic_data) LIKE ?', "%#{search.downcase}%")
+    else
+      nil
+    end
+  end
+
   def self.b_id(search)
     if search =~ /\A\d+\z/? true : false
       where( 'id = ?', "#{search.downcase}")

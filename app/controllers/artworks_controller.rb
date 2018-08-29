@@ -27,6 +27,18 @@ class ArtworksController < ApplicationController
           @artworks << artworkt
         end
 
+        s_biographic_comment = Artwork.b_biographic_comment(params[:search])
+
+        s_biographic_comment.each do |artworkt|
+          @artworks << artworkt
+        end
+
+        s_biographic_data = Artwork.b_biographic_data(params[:search])
+
+        s_biographic_data.each do |artworkt|
+          @artworks << artworkt
+        end
+
         b_country = Artwork.b_country(params[:search])
 
         b_country.each do |artworkt|
