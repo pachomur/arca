@@ -261,14 +261,6 @@ class Artwork < ActiveRecord::Base
     end
   end
 
-  def self.b_school(search)
-    if not search.to_s.empty?
-      joins('LEFT JOIN school ON school_id = school.id').where( 'lower(school.name) LIKE ?', "%#{search.downcase}%")
-    else
-      nil
-    end
-  end
-
   def self.b_iconographic_attributes(search)
     if not search.to_s.empty?
       joins('LEFT JOIN iconographic_attributes ON iconographic_attribute_id = iconographic_attributes.id').where( 'lower(iconographic_attributes.name) LIKE ?', "%#{search.downcase}%")
