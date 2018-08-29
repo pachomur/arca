@@ -82,9 +82,9 @@ class ArtworksController < ApplicationController
           @artworks << artworkt
         end
 
-        b_place = Artwork.b_place(params[:search])
+        b_school = Artwork.b_school(params[:search])
 
-        b_place.each do |artworkt|
+        b_school.each do |artworkt|
           @artworks << artworkt
         end
 

@@ -261,9 +261,9 @@ class Artwork < ActiveRecord::Base
     end
   end
 
-  def self.b_place(search)
+  def self.b_school(search)
     if not search.to_s.empty?
-      joins('LEFT JOIN place ON place_id = place.id').where( 'lower(place.name) LIKE ?', "%#{search.downcase}%")
+      joins('LEFT JOIN school ON school_id = school.id').where( 'lower(school.name) LIKE ?', "%#{search.downcase}%")
     else
       nil
     end
