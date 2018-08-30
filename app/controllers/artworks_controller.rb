@@ -100,6 +100,12 @@ class ArtworksController < ApplicationController
           @artworks << artworkt
         end
 
+        b_source = Artwork.b_sources(params[:search])
+
+        b_source.each do |artworkt|
+          @artworks << artworkt
+        end
+
         b_iconographic_attribute = Artwork.b_iconographic_attributes(params[:search])
 
         b_iconographic_attribute.each do |artworkt|
