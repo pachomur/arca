@@ -88,6 +88,24 @@ class ArtworksController < ApplicationController
           @artworks << artworkt
         end
 
+        b_school = Artwork.b_schools(params[:search])
+
+        b_school.each do |artworkt|
+          @artworks << artworkt
+        end
+
+        b_passage = Artwork.b_passages(params[:search])
+
+        b_passage.each do |artworkt|
+          @artworks << artworkt
+        end
+
+        b_iconographic_attribute = Artwork.b_iconographic_attributes(params[:search])
+
+        b_iconographic_attribute.each do |artworkt|
+          @artworks << artworkt
+        end
+
         b_symbol = Artwork.b_symbol(params[:search])
 
         b_symbol.each do |artworkt|

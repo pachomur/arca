@@ -269,6 +269,22 @@ class Artwork < ActiveRecord::Base
     end
   end
 
+  def self.b_schools(search)
+    if not search.to_s.empty?
+      joins('LEFT JOIN schools ON school_id = schools.id').where( 'lower(schools.name) LIKE ?', "%#{search.downcase}%")
+    else
+      nil
+    end
+  end
+
+  def self.b_passages(search)
+    if not search.to_s.empty?
+      joins('LEFT JOIN passages ON passage_id = passages.id').where( 'lower(passages.name) LIKE ?', "%#{search.downcase}%")
+    else
+      nil
+    end
+  end
+
   def self.b_iconographic_attributes(search)
     if not search.to_s.empty?
       joins('LEFT JOIN iconographic_attributes ON iconographic_attribute_id = iconographic_attributes.id').where( 'lower(iconographic_attributes.name) LIKE ?', "%#{search.downcase}%")
@@ -327,7 +343,7 @@ class Artwork < ActiveRecord::Base
 
   def self.b_types(search)
     if not search.to_s.empty?
-      joins('LEFT JOIN types ON types.id = artworks.type_id').where( 'lower(types.name) LIKE ?', "%#{search.downcase}%")
+      joins('LEFT JOIN types ON types.id = artworks.type_id').where( 'lower(types.name) LIKE ?', "%#{search.mb_chars.downcase}%")
     else
       all
     end
