@@ -261,6 +261,14 @@ class Artwork < ActiveRecord::Base
     end
   end
 
+  def self.b_places(search)
+    if not search.to_s.empty?
+      joins('LEFT JOIN places ON place_id = places.id').where( 'lower(places.name) LIKE ?', "%#{search.downcase}%")
+    else
+      nil
+    end
+  end
+
   def self.b_iconographic_attributes(search)
     if not search.to_s.empty?
       joins('LEFT JOIN iconographic_attributes ON iconographic_attribute_id = iconographic_attributes.id').where( 'lower(iconographic_attributes.name) LIKE ?', "%#{search.downcase}%")

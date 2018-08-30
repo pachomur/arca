@@ -82,6 +82,12 @@ class ArtworksController < ApplicationController
           @artworks << artworkt
         end
 
+        b_place = Artwork.b_places(params[:search])
+
+        b_place.each do |artworkt|
+          @artworks << artworkt
+        end
+
         b_symbol = Artwork.b_symbol(params[:search])
 
         b_symbol.each do |artworkt|
