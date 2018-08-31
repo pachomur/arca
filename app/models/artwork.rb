@@ -141,6 +141,14 @@ class Artwork < ActiveRecord::Base
     end
   end
 
+  def self.b_annotation(search)
+    if not search.to_s.empty?
+      where( 'lower(annotation) LIKE ?', "%#{search.mb_chars.downcase}%")
+    else
+      nil
+    end
+  end
+
   def self.b_biographic_comment(search)
     if not search.to_s.empty?
       where( 'lower(biographic_comment) LIKE ?', "%#{search.mb_chars.downcase}%")
@@ -304,6 +312,14 @@ class Artwork < ActiveRecord::Base
   def self.b_symbol (search)
     if not search.to_s.empty?
       joins('LEFT JOIN artwork_symbols_artworks ON artworks.id = artwork_symbols_artworks.artwork_id LEFT JOIN artwork_symbols ON artwork_symbols_artworks.artwork_symbol_id = artwork_symbols.id').where( 'lower(artwork_symbols.name) LIKE ?', "%#{search.mb_chars.downcase}%")
+    else
+      nil
+    end
+  end
+
+  def self.b_engravings (search)
+    if not search.to_s.empty?
+      joins('LEFT JOIN artworks_engravings ON artworks.id = artworks_engravings.artwork_id LEFT JOIN engravings ON artworks_engravings.engraving_id = engravings.id').where( 'lower(engravings.name) LIKE ?', "%#{search.mb_chars.downcase}%")
     else
       nil
     end

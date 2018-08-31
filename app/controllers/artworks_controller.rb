@@ -106,6 +106,18 @@ class ArtworksController < ApplicationController
           @artworks << artworkt
         end
 
+        b_annotation = Artwork.b_annotation(params[:search])
+
+        b_annotation.each do |artworkt|
+          @artworks << artworkt
+        end
+
+        b_engraving = Artwork.b_engravings(params[:search])
+
+        b_engraving.each do |artworkt|
+          @artworks << artworkt
+        end
+
         b_iconographic_attribute = Artwork.b_iconographic_attributes(params[:search])
 
         b_iconographic_attribute.each do |artworkt|
