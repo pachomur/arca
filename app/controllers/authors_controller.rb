@@ -30,13 +30,9 @@ class AuthorsController < ApplicationController
       if @author.save
         format.html { redirect_to @author, notice: 'Author was successfully created.' }
         format.json { render :show, status: :created, location: @author }
-        logger = Logger.new(STDOUT)
-        logger.level = Logger::WARN
-        logger.info("Entro a save")
       else
         format.html { render :new }
         format.json { render json: @author.errors, status: :unprocessable_entity }
-        logger.info("Entro a error")
       end
     end
   end
