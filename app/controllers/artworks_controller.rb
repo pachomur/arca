@@ -419,7 +419,6 @@ class ArtworksController < ApplicationController
                                     passage_attributes:[:id,:name,:_destroy],
                                     scene_attributes:[:id,:name,:_destroy],
                                     country_attributes:[:id,:name,:_destroy],
-                                    scene_attributes:[:id,:name,:_destroy],
                                     school_attributes:[:id,:name,:_destroy],
                                     source_attributes:[:id,:name,:_destroy],
                                     story_type_attributes:[:id,:name,:_destroy],
